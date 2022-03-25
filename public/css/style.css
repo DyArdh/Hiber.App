@@ -1,0 +1,91 @@
+/* Google Font Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --body-color: #fff;
+  --text-color-light: #fff;
+  --text-color-dark: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  user-select: none;
+}
+
+body {
+  max-width: 100%;
+}
+
+.login-wrapper form {
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  left: 10%;
+}
+
+.login-wrapper form h3 {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.login-wrapper form label {
+  display: block;
+  margin-top: 30px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.login-wrapper form input {
+  display: block;
+  height: 60px;
+  width: 380px;
+  border: 2px solid #5138ed;
+  outline: none;
+  border-radius: 25px;
+  padding: 0 25px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.login-wrapper form i {
+  position: absolute;
+  right: 8%;
+  bottom: 30%;
+  color: #5138ed;
+  cursor: pointer;
+}
+
+.login-wrapper form button {
+  margin-top: 40px;
+  width: 100%;
+  color: var(--text-color-light);
+  background-color: #5138ed;
+  padding: 15px 0;
+  font-size: 18px;
+  font-size: 600;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-wrapper form p {
+  margin-top: 20px;
+}
+
+.login-wrapper .overlay-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 100;
+  background: #5138ed;
+}
