@@ -477,3 +477,19 @@ body {
   color: var(--text-color-light);
   border: none;
 }
+
+.conf-delete-btn {
+  width: 70px;
+  height: 40px;
+  background-color: #e20e0e;
+  color: var(--text-color-light);
+  border: none;
+}
+
+.cancel-btn {
+  width: 70px;
+  height: 40px;
+  background-color: #a3a3a3;
+  color: var(--text-color-light);
+  border: none;
+}
