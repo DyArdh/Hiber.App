@@ -1,0 +1,27 @@
+/* Google Font Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --body-color: #fff;
+  --text-color-light: #fff;
+  --text-color-dark: #000000;
+  --primary-color: #2d31fa;
+  --second-color: #051367;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  user-select: none;
+}
+
+.input-group .input-group-text {
+  background-color: transparent;
+}
+
+.input-group input.form-control {
+  border-right: none !important;
+}
