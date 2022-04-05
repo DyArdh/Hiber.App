@@ -30,6 +30,10 @@ Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/acc-admin', [AccAdminController::class, 'index']);
 Route::post('/acc-admin/{id}', [AccAdminController::class], 'index');
 
+// route without controller
+Route::get('/dashboard/stok/pengeringan', function () {
+  return view('stok.pengeringan.index');
+})->name('dashboard.stok.pengeringan');
+
 Route::middleware(['auth'])->group(function () {
-    
 });
