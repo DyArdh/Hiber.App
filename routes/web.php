@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccAdminController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -26,6 +27,8 @@ Route::get('/register/admin', [RegisterController::class, 'index']);
 Route::post('/register/admin', [RegisterController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/acc-admin', [AccAdminController::class, 'index']);
+Route::post('/acc-admin/{id}', [AccAdminController::class], 'index');
 
 Route::middleware(['auth'])->group(function () {
     

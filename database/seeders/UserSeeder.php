@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
                 'nama' => 'Andiko Yoga',
                 'alamat' => 'Ds.Banaran',
                 'email' => 'rizuna30@gmail.com',
+                'no_hp' => '085157506552',
                 'password' => bcrypt('12345'),
                 'role' => 'Owner',
             ],

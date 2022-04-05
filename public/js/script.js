@@ -36,3 +36,52 @@ for (var i = 0; i < btns.length; i++) {
 }
 
 // End Javascript Dashboard
+
+// Datatables Acc Admin
+
+// $(document).ready(function () {
+//     var table = $("#tableAdmin").DataTable({
+//         paging: false,
+//         ordering: false,
+//         info: false,
+//         searching: false,
+//     });
+
+//     table.on("click", ".edit", function () {
+//         $tr = $(this).closest("tr");
+//         if ($($tr).hassClass("child")) {
+//             $tr = $tr.prev(".parent");
+//         }
+
+//         var data = table.row($tr).data();
+
+//         $("#nama").val(data[1]);
+//         $("#alamat").val(data[2]);
+//         $("#email").val(data[3]);
+//         $("#no_hp").val(data[4]);
+//         $("#role").val(data[5]);
+
+//         $("#editAkun-btn").attr("action", "/acc-admin" + data[0]);
+//         $("#popupEditAcc").modal("show");
+//     });
+// });
+
+// End Datatables Acc Admin
+
+$("#popupEditAc").on("show.bs.modal", function (event) {
+    var button = $(event.relatedTarget);
+    var nama = button.data("nama");
+    var alamat = button.data("alamat");
+    var email = button.data("email");
+    var no_hp = button.data("no_hp");
+    var role = button.data("role");
+
+    var modal = $(this);
+
+    modal.find(".modal-title").text("Edit Akun");
+    modal.find(".modal-body #nama").val(nama);
+    modal.find(".modal-body #alamat").val(alamat);
+    modal.find(".modal-body #email").val(email);
+    modal.find(".modal-body #no_hp").val(no_hp);
+    modal.find(".modal-body #role").val(role);
+});
