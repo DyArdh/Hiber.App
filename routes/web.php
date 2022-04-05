@@ -27,6 +27,10 @@ Route::post('/register/admin', [RegisterController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+// route without controller
+Route::get('/dashboard/stok/pengeringan', function () {
+  return view('stok.pengeringan.index');
+})->name('dashboard.stok.pengeringan');
+
 Route::middleware(['auth'])->group(function () {
-    
 });
