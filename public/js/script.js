@@ -37,51 +37,26 @@ for (var i = 0; i < btns.length; i++) {
 
 // End Javascript Dashboard
 
-// Datatables Acc Admin
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    "use strict";
 
-// $(document).ready(function () {
-//     var table = $("#tableAdmin").DataTable({
-//         paging: false,
-//         ordering: false,
-//         info: false,
-//         searching: false,
-//     });
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
 
-//     table.on("click", ".edit", function () {
-//         $tr = $(this).closest("tr");
-//         if ($($tr).hassClass("child")) {
-//             $tr = $tr.prev(".parent");
-//         }
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+            "submit",
+            function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
 
-//         var data = table.row($tr).data();
-
-//         $("#nama").val(data[1]);
-//         $("#alamat").val(data[2]);
-//         $("#email").val(data[3]);
-//         $("#no_hp").val(data[4]);
-//         $("#role").val(data[5]);
-
-//         $("#editAkun-btn").attr("action", "/acc-admin" + data[0]);
-//         $("#popupEditAcc").modal("show");
-//     });
-// });
-
-// End Datatables Acc Admin
-
-$("#popupEditAc").on("show.bs.modal", function (event) {
-    var button = $(event.relatedTarget);
-    var nama = button.data("nama");
-    var alamat = button.data("alamat");
-    var email = button.data("email");
-    var no_hp = button.data("no_hp");
-    var role = button.data("role");
-
-    var modal = $(this);
-
-    modal.find(".modal-title").text("Edit Akun");
-    modal.find(".modal-body #nama").val(nama);
-    modal.find(".modal-body #alamat").val(alamat);
-    modal.find(".modal-body #email").val(email);
-    modal.find(".modal-body #no_hp").val(no_hp);
-    modal.find(".modal-body #role").val(role);
-});
+                form.classList.add("was-validated");
+            },
+            false
+        );
+    });
+})();

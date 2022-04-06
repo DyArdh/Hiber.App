@@ -13,26 +13,21 @@ class AccAdminController extends Controller
         return view('acc-admin.index', compact('data'));
     }
 
-    public function updateData(Request $request, $id) {
-
-        $this->validate($request, [
-            'nama' => 'required',
-            'alamat' => 'required',
-            'email' => 'required',
-            'no_hp' => 'required',
-            'role' => 'required',
-        ]);
-        
+    public function edit($id) {
+       
         $data = User::find($id);
-
-        $data->nama = $request->input('nama');
-        $data->alamat = $request->input('alamat');
-        $data->email = $request->input('email');
-        $data->no_hp = $request->input('no_hp');
-        $data->role = $request->input('role');
-
-        $data->update($request->all());
-
-        return redirect('/acc-admin');
+        return view('acc-admin.edit', compact('data'));
     }
+
+    public function createData() {
+
+        return view('acc-admin.tambah');
+    }
+
+    public function createDataAcc(Request $request) {
+
+        User::create($request->all());
+        return redirect()->route('adminAcc');
+    }
+    
 }

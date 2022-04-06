@@ -26,9 +26,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/register/admin', [RegisterController::class, 'index']);
 Route::post('/register/admin', [RegisterController::class, 'index']);
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-Route::get('/acc-admin', [AccAdminController::class, 'index']);
-Route::post('/acc-admin/{id}', [AccAdminController::class], 'index');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('db');
+
+Route::get('/account/admin', [AccAdminController::class, 'index'])->name('adminAcc');
+Route::get('/account/admin/create', [AccAdminController::class, 'createData'])->name('createAccount');
+Route::post('/account/admin/createData', [AccAdminController::class, 'createDataAcc'])->name('createDataAccount');
 
 // route without controller
 Route::get('/dashboard/stok/pengeringan', function () {
