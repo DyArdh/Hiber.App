@@ -21,6 +21,19 @@ class StokPengeringanController extends Controller
         return redirect()->route('stok-pengeringan');
     }
 
+    public function edit($id) {
+       
+        $data = StokGudang::find($id);
+        return view('stok.pengeringan.edit', compact('data'));
+    }
+
+    public function editData(Request $request, $id) {
+       
+        $data = StokGudang::find($id);
+        $data->update($request->all());
+        return redirect()->route('stok-pengeringan');
+    }
+
     public function delete($id) {
         $data = StokGudang::find($id);
         $data->delete();

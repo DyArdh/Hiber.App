@@ -49,7 +49,7 @@
                 <label for="role" class="form-label col-md-3" >Role</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" id="role" name="role">
-                        <option selected>value="{{ $data->role }}"</option>
+                        <option selected>{{ $data->role }}</option>
                         <option value="Admin" selected>
                             Admin
                         </option>

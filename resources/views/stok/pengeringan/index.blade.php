@@ -34,7 +34,7 @@
             <th>{{ $row->status }}</th>
             <th>{{ $row->penanggung_jawab }}</th>
             <th>
-              <a href="/account/admin/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
+              <a href="/stock/pengeringan/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
               <button type="submit" value="delete" class="delete-btn rounded-3 ms-2 my-1" data-id="{{ $row->id }}"><i class="fa-solid fa-trash-can"></i></button>                    
             </th>
           </tr>
