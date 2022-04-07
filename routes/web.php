@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\AccAdminController;
-use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StokPengeringan;
+use App\Http\Controllers\AccAdminController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StokPengeringanController;
+use App\Http\Controllers\StokPenggilinganController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,11 +36,20 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/account/admin/{id}/edit', [AccAdminController::class, 'edit'])->name('editAccount');
   Route::post('/account/admin/{id}/editData', [AccAdminController::class, 'editData'])->name('editDataAccount');
   Route::get('/account/admin/{id}/delete', [AccAdminController::class, 'delete'])->name('deleteAccount');
+
   Route::get('/stok/pengeringan', [StokPengeringanController::class, 'index'])->name('stok-pengeringan');
+  Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');
+  Route::post('/stock/pengeringan/createData', [StokPengeringanController::class, 'createDataPengeringan'])->name('createDataPengeringan');
+  Route::get('/stock/pengeringan/{id}/delete', [StokPengeringanController::class, 'delete'])->name('deletePengeringan');
+  Route::get('/stock/pengeringan/{id}/edit', [StokPengeringanController::class, 'edit'])->name('editPengeringan');
+  Route::post('/stock/pengeringan/{id}/editData', [StokPengeringanController::class, 'editData'])->name('editDataPengeringan');
+
+  Route::get('/stok/penggilingan', [StokPenggilinganController::class, 'index'])->name('stok-penggilingan');
+  Route::get('/stock/penggilingan/create', [StokPenggilinganController::class, 'createData'])->name('createPenggilingan');
+  Route::post('/stock/penggilingan/createData', [StokPenggilinganController::class, 'createDataPenggilingan'])->name('createDataPenggilingan');
+  Route::get('/stock/penggilingan/{id}/delete', [StokPenggilinganController::class, 'delete'])->name('deletePenggilingan');
+  Route::get('/stock/penggilingan/{id}/edit', [StokPenggilinganController::class, 'edit'])->name('editPenggilingan');
+  Route::post('/stock/penggilingan/{id}/editData', [StokPenggilinganController::class, 'editData'])->name('editDataPenggilingan');
+
 });
 
-Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');
-Route::post('/stock/pengeringan/createData', [StokPengeringanController::class, 'createDataPengeringan'])->name('createDataPengeringan');
-Route::get('/stock/pengeringan/{id}/delete', [StokPengeringanController::class, 'delete'])->name('deletePengeringan');
-Route::get('/stock/pengeringan/{id}/edit', [StokPengeringanController::class, 'edit'])->name('editPengeringan');
-Route::post('/stock/pengeringan/{id}/editData', [StokPengeringanController::class, 'editData'])->name('editDataPengeringan');

@@ -34,7 +34,7 @@
           <div class="collapse" id="collapseStock" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
               <a class="nav-link" href="/stok/pengeringan">Pengeringan</a>
-              <a class="nav-link" href="#">Penggilingan</a>
+              <a class="nav-link" href="/stok/penggilingan">Penggilingan</a>
             </nav>
           </div>
 
