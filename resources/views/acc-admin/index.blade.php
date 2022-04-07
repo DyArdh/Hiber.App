@@ -34,9 +34,9 @@
                     <th> {{ $row->email }} </th>
                     <th> 0{{ $row->no_hp }} </th>
                     <th> {{ $row->role }} </th>
-                    <th>
-                    <a href="/tampilkandata/{{ $row->id }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                    <button type="button" class="delete-btn rounded-3 ms-2 my-1" data-bs-toggle="modal" data-bs-target="#popupDeleteAcc"><i class="fa-solid fa-trash-can"></i></button>
+                    <th class="d-flex">
+                    <a href="/account/admin/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                    <button type="submit" value="delete" class="delete-btn rounded-3 ms-2 my-1" data-id="{{ $row->id }}" data-nama="{{ $row->nama }}"><i class="fa-solid fa-trash-can"></i></button>                    
                     </th>
                 </tr>
                 @endforeach
@@ -45,4 +45,33 @@
         </div>
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+
+<script>
+  $('.delete-btn').click(function () {
+    var user_id = $(this).attr('data-id')
+    var user_nama = $(this).attr('data-nama')
+    swal({
+          // title: "Are you sure?",
+          text: "Apakah anda ingin menghapus data?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+    .then((willDelete) => {
+      if (willDelete) {
+        window.location = "/account/admin/"+user_id+"/delete"
+        swal("Data berhasil dihapus!", {
+          icon: "success",
+        });
+      } else {
+        swal("Data tidak dihapus!");
+      }
+    });
+      });
+</script>
+    
 @endsection

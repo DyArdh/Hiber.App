@@ -9,7 +9,7 @@ class AccAdminController extends Controller
 {
     public function index() {
 
-        $data = User::All();
+        $data = User::where('role', '=','Admin')->get();
         return view('acc-admin.index', compact('data'));
     }
 
@@ -17,6 +17,13 @@ class AccAdminController extends Controller
        
         $data = User::find($id);
         return view('acc-admin.edit', compact('data'));
+    }
+
+    public function editData(Request $request, $id) {
+       
+        $data = User::find($id);
+        $data->update($request->all());
+        return redirect()->route('adminAcc');
     }
 
     public function createData() {
@@ -27,6 +34,12 @@ class AccAdminController extends Controller
     public function createDataAcc(Request $request) {
 
         User::create($request->all());
+        return redirect()->route('adminAcc');
+    }
+
+    public function delete($id) {
+        $data = User::find($id);
+        $data->delete();
         return redirect()->route('adminAcc');
     }
     

@@ -18,6 +18,14 @@ html,
 body {
     background-color: #f8f9fe;
     height: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
 
 * {
@@ -76,6 +84,15 @@ body {
     z-index: 1038;
     transform: translateX(-225px);
 }
+
+.no-scroll {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.no-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
 #layoutSidenav #layoutSidenav_content {
     position: relative;
     display: flex;
