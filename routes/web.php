@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StokPengeringan;
+use App\Http\Controllers\StokPengeringanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/account/admin/{id}/edit', [AccAdminController::class, 'edit'])->name('editAccount');
   Route::post('/account/admin/{id}/editData', [AccAdminController::class, 'editData'])->name('editDataAccount');
   Route::get('/account/admin/{id}/delete', [AccAdminController::class, 'delete'])->name('deleteAccount');
-  Route::get('/stok/pengeringan', [StokPengeringan::class, 'index'])->name('stok-pengeringan');
+  Route::get('/stok/pengeringan', [StokPengeringanController::class, 'index'])->name('stok-pengeringan');
 });
+
+Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');
+Route::post('/stock/pengeringan/createData', [StokPengeringanController::class, 'createDataPengeringan'])->name('createDataPengeringan');
+Route::get('/stock/pengeringan/{id}/delete', [StokPengeringanController::class, 'delete'])->name('deletePengeringan');
