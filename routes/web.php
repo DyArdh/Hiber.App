@@ -6,6 +6,7 @@ use App\Http\Controllers\StokPengeringan;
 use App\Http\Controllers\AccAdminController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AccKaryawanController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenggilinganController;
 
@@ -36,6 +37,13 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/account/admin/{id}/edit', [AccAdminController::class, 'edit'])->name('editAccount');
   Route::post('/account/admin/{id}/editData', [AccAdminController::class, 'editData'])->name('editDataAccount');
   Route::get('/account/admin/{id}/delete', [AccAdminController::class, 'delete'])->name('deleteAccount');
+
+  Route::get('/account/karyawan', [AccKaryawanController::class, 'index'])->name('karyawanAcc');
+  Route::get('/account/karyawan/create', [AccKaryawanController::class, 'createData'])->name('createKaryawan');
+  Route::post('/account/karyawan/createData', [AccKaryawanController::class, 'createDataAcc'])->name('createDataKaryawan');
+  Route::get('/account/karyawan/{id}/edit', [AccKaryawanController::class, 'edit'])->name('editKaryawan');
+  Route::post('/account/karyawan/{id}/editData', [AccKaryawanController::class, 'editData'])->name('editDataKaryawan');
+  Route::get('/account/karyawan/{id}/delete', [AccKaryawanController::class, 'delete'])->name('deleteKaryawan');
 
   Route::get('/stok/pengeringan', [StokPengeringanController::class, 'index'])->name('stok-pengeringan');
   Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');

@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Account Admin</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Account Karyawan</div>
     <div class="row">
-        <a href="/account/admin/create"><div class="add-admin col-xl-3 col-md-6">
+        <a href="/account/karyawan/create"><div class="add-admin col-xl-3 col-md-6">
         <button type="button" class="btn btn-primary my-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
             <i class="fa-solid fa-pencil"></i>
             <span class="ps-2 fw-bolder"> Tambah Akun</span>
@@ -13,7 +13,7 @@
     </div>
     <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
-        <h4 class="pt-4 pb-3">Daftar Akun Admin</h4>
+        <h4 class="pt-4 pb-3">Daftar Akun Karyawan</h4>
         <div class="table-responsive w-auto">
             <table class="table table-bordered" id="tableAdmin">
             <thead>
@@ -35,7 +35,7 @@
                     <th> 0{{ $row->no_hp }} </th>
                     <th> {{ $row->role }} </th>
                     <th class="d-flex">
-                    <a href="/account/admin/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                    <a href="/account/karyawan/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
                     <button type="submit" value="delete" class="delete-btn rounded-3 ms-2 my-1" data-id="{{ $row->id }}" data-nama="{{ $row->nama }}"><i class="fa-solid fa-trash-can"></i></button>                    
                     </th>
                 </tr>
@@ -62,7 +62,7 @@
         })
     .then((willDelete) => {
       if (willDelete) {
-        window.location = "/account/admin/"+user_id+"/delete"
+        window.location = "/account/karyawan/"+user_id+"/delete"
         swal("Data berhasil dihapus!", {
           icon: "success",
         });

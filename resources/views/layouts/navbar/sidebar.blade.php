@@ -22,7 +22,7 @@
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
               <a class="nav-link" href="/account/admin">Admin</a>
-              <a class="nav-link" href="#">Karyawan</a>
+              <a class="nav-link" href="/account/karyawan">Karyawan</a>
             </nav>
           </div>
 
