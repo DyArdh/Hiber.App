@@ -7,6 +7,8 @@ use App\Http\Controllers\AccAdminController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AccKaryawanController;
+use App\Http\Controllers\AccPerusahaanController;
+use App\Http\Controllers\StokGabahController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenggilinganController;
 
@@ -31,6 +33,9 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
   Route::get('/logout', [LoginController::class, 'logout']);
   Route::get('/dashboard', [DashboardController::class, 'index'])->name('db');
+
+  Route::resource('/account/perusahaan', AccPerusahaanController::class)->except(['show', 'destroy']);
+
   Route::get('/account/admin', [AccAdminController::class, 'index'])->name('adminAcc');
   Route::get('/account/admin/create', [AccAdminController::class, 'createData'])->name('createAccount');
   Route::post('/account/admin/createData', [AccAdminController::class, 'createDataAcc'])->name('createDataAccount');
@@ -45,6 +50,8 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/account/karyawan/{id}/editData', [AccKaryawanController::class, 'editData'])->name('editDataKaryawan');
   Route::get('/account/karyawan/{id}/delete', [AccKaryawanController::class, 'delete'])->name('deleteKaryawan');
 
+  Route::resource('/stock/gabah', StokGabahController::class)->except(['show', 'destroy']);
+
   Route::get('/stok/pengeringan', [StokPengeringanController::class, 'index'])->name('stok-pengeringan');
   Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');
   Route::post('/stock/pengeringan/createData', [StokPengeringanController::class, 'createDataPengeringan'])->name('createDataPengeringan');
@@ -58,6 +65,4 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/stock/penggilingan/{id}/delete', [StokPenggilinganController::class, 'delete'])->name('deletePenggilingan');
   Route::get('/stock/penggilingan/{id}/edit', [StokPenggilinganController::class, 'edit'])->name('editPenggilingan');
   Route::post('/stock/penggilingan/{id}/editData', [StokPenggilinganController::class, 'editData'])->name('editDataPenggilingan');
-
 });
-

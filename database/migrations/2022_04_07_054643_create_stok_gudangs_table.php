@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('stok_gudangs', function (Blueprint $table) {
             $table->id();
             $table->integer('berat');
-            $table->enum('status', ['Pengeringan', 'Penggilingan']); 
+            $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan']);
             $table->string('penanggung_jawab');
             $table->timestamps();
         });

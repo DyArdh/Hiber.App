@@ -2,11 +2,12 @@
 
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
-    Ubah Data Penggilingan
+    Ubah Data Stok Gabah
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
-        <form action="/stock/penggilingan/{{ $data->id }}/editData" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+        <form action="{{ route('gabah.update', $data->id) }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+            @method('PUT')
             @csrf
             <div class="form-group row mb-4 px-3">
                 <label for="nama" class="form-label col-md-3">Berat</label>
@@ -22,13 +23,9 @@
                 <label for="status" class="form-label col-md-3" >Status</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" id="status" name="status">
-                        <option selected >{{ $data->status }}</option>
-                        <option value="Pengeringan">
-                            Pengeringan
-                        </option>
-                        <option value="Penggilingan">
-                            Penggilingan
-                        </option>
+                        <option value="Gabah" @if($data->status == 'Gabah') selected @endif>Gabah</option>
+                        <option value="Pengeringan" @if($data->status == 'Pengeringan') selected @endif>Pengeringan</option>
+                        <option value="Penggilingan" @if($data->status == 'Penggilingan') selected @endif>Penggilingan</option>
                     </select>
                 </div>
             </div>

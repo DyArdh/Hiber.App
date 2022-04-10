@@ -14,19 +14,31 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = [
-            [
-                'nama' => 'Andiko Yoga',
-                'alamat' => 'Ds.Banaran',
-                'email' => 'rizuna30@gmail.com',
-                'no_hp' => '085157506552',
-                'password' => bcrypt('12345'),
-                'role' => 'Owner',
-            ],
-        ];
+        User::create([
+            'nama' => 'Andiko Yoga',
+            'alamat' => 'Ds.Banaran',
+            'email' => 'rizuna30@gmail.com',
+            'no_hp' => '085157506552',
+            'password' => bcrypt('12345'),
+            'role' => 'Owner',
+        ]);
 
-        foreach ($user as $key => $value) {
-            User::create($value);
-        }
+        User::create([
+            'nama' => 'Andiko',
+            'alamat' => 'Ds.Banaran',
+            'email' => 'rizuna31@gmail.com',
+            'no_hp' => '085157506552',
+            'password' => bcrypt('12345'),
+            'role' => 'Admin',
+        ]);
+
+        User::create([
+            'nama' => 'Yoga',
+            'alamat' => 'Ds.Banaran',
+            'email' => 'rizuna32@gmail.com',
+            'no_hp' => '085157506552',
+            'password' => bcrypt('12345'),
+            'role' => 'Karyawan',
+        ]);
     }
 }

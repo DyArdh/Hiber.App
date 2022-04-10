@@ -2,10 +2,10 @@
 
 @section('content')
 
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Account Karyawan</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Account Perusahaan</div>
     <div class="row">
-      @can('createKaryawan', \App\Models\User::class)
-        <a href="/account/karyawan/create">
+      @can('createPerusahaan', \App\Models\User::class)
+        <a href="{{ route('perusahaan.create') }}">
           <button type="button" class="btn btn-primary my-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
             <i class="fa-solid fa-pencil"></i>
             <span class="ps-2 fw-bolder"> Tambah Akun</span>
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
-        <h4 class="pt-4 pb-3">Daftar Akun Karyawan</h4>
+        <h4 class="pt-4 pb-3">Daftar Akun Perusahaan</h4>
         @if (session('success'))
           <div class="modal fade success" id="modal-success" tabindex="-1" aria-labelledby="modal-successLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -44,7 +44,7 @@
               <th scope="col">Email</th>
               <th scope="col">No. HP</th>
               <th scope="col">Role</th>
-              @can('updateKaryawan', \App\Models\User::class)
+              @can('updatePerusahaan', \App\Models\User::class)
                 <th scope="col">Action</th>
               @endcan
             </thead>
@@ -57,10 +57,11 @@
                   <td> {{ $row->email }} </td>
                   <td> {{ $row->no_hp }} </td>
                   <td> {{ $row->role }} </td>
-                  @can('updateKaryawan', \App\Models\User::class)
+                  @can('updatePerusahaan', \App\Models\User::class)
                     <td class="d-flex">
-                    <a href="/account/karyawan/{{ $row->id }}/edit"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
-                    <button type="submit" value="delete" class="delete-btn rounded-3 ms-2 my-1" data-id="{{ $row->id }}" data-nama="{{ $row->nama }}"><i class="fa-solid fa-trash-can"></i></button>                    
+                      <a href="{{ route('perusahaan.edit', $row->id) }}">
+                        <button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button>
+                      </a>      
                     </td>
                   @endcan
               </tr>
@@ -79,27 +80,6 @@
     if ($('.success').length) {
       $('#modal-success').modal('show');
     }
-
-    $('.delete-btn').click(function () {
-      var user_id = $(this).attr('data-id')
-      swal({
-            // title: "Are you sure?",
-            text: "Apakah anda ingin menghapus data?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          })
-      .then((willDelete) => {
-        if (willDelete) {
-          window.location = "/account/karyawan/"+user_id+"/delete"
-          swal("Data berhasil dihapus!", {
-            icon: "success",
-          });
-        } else {
-          swal("Data tidak dihapus!");
-        }
-      });
-    });
   });
 </script>
     
