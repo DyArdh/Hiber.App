@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AccKaryawanController;
 use App\Http\Controllers\AccPerusahaanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StokGabahController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenggilinganController;
@@ -65,4 +66,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/stock/penggilingan/{id}/delete', [StokPenggilinganController::class, 'delete'])->name('deletePenggilingan');
   Route::get('/stock/penggilingan/{id}/edit', [StokPenggilinganController::class, 'edit'])->name('editPenggilingan');
   Route::post('/stock/penggilingan/{id}/editData', [StokPenggilinganController::class, 'editData'])->name('editDataPenggilingan');
+
+  Route::get('account/profile', [ProfileController::class, 'index'])->name('profile');
+  Route::post('account/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
 });

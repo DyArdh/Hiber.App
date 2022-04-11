@@ -73,4 +73,9 @@ class UserPolicy
     {
         return $user->role == 'Admin';
     }
+
+    public function update(User $user)
+    {
+        return in_array($user->role, ['Karyawan', 'Admin', 'Owner']);
+    }
 }
