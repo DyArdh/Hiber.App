@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-12 mb-4 pb-4 px-3 d-flex justify-content-end">
-                <a href="/stok/penggilingan"><button type="button" class="btn back-btn me-3">
+                <a href="{{ route('gabah.index') }}"><button type="button" class="btn back-btn me-3">
                     <i class="fa-solid fa-arrow-left"></i>
                     Kembali
                 </button></a>
