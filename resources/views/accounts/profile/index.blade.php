@@ -6,58 +6,64 @@
     Profile
 </div>
 
-<div class="row mt-4 mx-3 d-flex justify-content-center">
-    <div class="add-admin col-12 bg-white">
-        <form action="{{ route('profile.update') }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group row mb-4 px-3">
-                <label for="nama" class="form-label col-md-3">Nama Lengkap</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', Auth::user()->nama) }}" required/>
-                </div>
-                <div class="invalid-feedback">
-                    Nama lengkap tidak boleh kosong
-                </div>
+<div class="row mt-4 mx-1 d-flex justify-content-center">
+    <div class="account-view col-12 bg-white">
+        <div class="row mt-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">Nama</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">{{ $user->nama }}</div>
+        </div>
+
+        <div class="row mt-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">Alamat</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">{{ $user->alamat }}</div>
+        </div>
+
+        <div class="row mt-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">Email</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">{{ $user->email }}</div>
+        </div>
+
+        <div class="row mt-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">Password</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">
+                <a href="#">
+                    <button type="button" class="btn btn-primary" id="tambah-acc">
+                      <i class="fa-solid fa-lock"></i>
+                      <span class="ps-2 fw-bolder"> Password</span>
+                    </button>
+                </a>   
             </div>
-            <div class="form-group row mb-4 px-3">
-                <label for="alamat" class="form-label col-md-3">Alamat</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="alamat" name="alamat" value="{{ old('alamat', Auth::user()->alamat) }}" required />  
-                </div>
-                <div class="invalid-feedback">
-                    Alamat tidak boleh kosong
-                </div>
+        </div>
+
+        <div class="row mt-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">No. HP</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">{{ $user->no_hp }}</div>
+        </div>
+
+        <div class="row my-4 mx-3  fw-bold">
+            <div class="col-3 col-sm-3">Role</div>
+            <div class="col-9 col-sm-2">:</div>
+            <div class="col-12 col-sm-7 text-start text-sm-end">{{ $user->role }}</div>
+        </div>
+
+        <div class="row mt-3 mb-4 mx-3  fw-bold">
+            <hr style="height: 5px">
+            <div class="col-3 col-sm-3"></div>
+            <div class="col-9 col-sm-2"></div>
+            <div class="col-12 col-sm-7 text-end">
+                <a href="#">
+                    <button type="button" class="btn btn-primary" id="tambah-acc">
+                      <i class="fa-solid fa-pencil"></i>
+                      <span class="ps-2 fw-bolder"> Edit Profile</span>
+                    </button>
+                </a>  
             </div>
-            <div class="form-group row mb-4 px-3">
-                <label for="email" class="form-label col-md-3">Email</label>
-                <div class="col-md-9">
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email', Auth::user()->email) }}" required />
-                </div>
-                <div class="invalid-feedback">
-                    Email tidak boleh kosong
-                </div>
-            </div>
-            <input type="hidden" class="form-control" id="password" name="password" value="{{ old('password', Auth::user()->password) }}" />
-            <div class="form-group row mb-4 px-3">
-                <label for="no_hp" class="form-label col-md-3">No. HP</label>
-                <div class="col-md-9">
-                    <input type="text" class="form-control" id="no_hp" name="no_hp" value="{{ old('no_hp', Auth::user()->no_hp) }}" required />
-                </div>
-                <div class="invalid-feedback">
-                    No. HP tidak boleh kosong
-                </div>
-            </div>
-            <input type="hidden" id="role" name="role" value="{{ old('role', Auth::user()->role) }}">
-            <div class="col-md-12 mb-4 pb-4 px-3 d-flex justify-content-end">
-                <a href="/account/karyawan"><button type="button" class="btn back-btn me-3">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    Kembali
-                </button></a>
-                <button type="submit" class="btn simpan-btn btn-primary">
-                    Simpan
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
