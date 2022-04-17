@@ -12,6 +12,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StokGabahController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenggilinganController;
+use App\Http\Controllers\StokPenyortiranController;
+use App\Http\Controllers\StokProdukJadiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,5 +70,8 @@ Route::middleware(['auth'])->group(function () {
   Route::post('/stock/penggilingan/{id}/editData', [StokPenggilinganController::class, 'editData'])->name('editDataPenggilingan');
 
   Route::get('account/profile', [ProfileController::class, 'index'])->name('profile');
-  Route::post('account/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+  
+  Route::resource('/stock/penyortiran', StokPenyortiranController::class)->except(['show', 'destroy']);
+
+  Route::resource('/stock/produkJadi', StokProdukJadiController::class)->except(['show', 'destroy']);
 });

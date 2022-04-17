@@ -16,8 +16,11 @@ return new class extends Migration
         Schema::create('stok_gudangs', function (Blueprint $table) {
             $table->id();
             $table->integer('berat');
-            $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan']);
+            $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan', 'Penyortiran', 'Produk Jadi']);
             $table->string('penanggung_jawab');
+            $table->enum('jenis', ['Polos', 'Medium', 'Super']);
+            $table->string('merk')->nullable();
+            $table->bigInteger('harga')->nullable();
             $table->timestamps();
         });
     }

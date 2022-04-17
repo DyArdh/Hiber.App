@@ -50,8 +50,8 @@
           </a>
           <div class="collapse" id="collapseStockJadi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="#">Penyortiran</a>
-              <a class="nav-link" href="#">Produk Jadi</a>
+              <a class="nav-link" href="{{ route('penyortiran.index') }}">Penyortiran</a>
+              <a class="nav-link" href="{{ route('produkJadi.index') }}">Produk Jadi</a>
             </nav>
           </div>
         </div>
