@@ -16,7 +16,21 @@ class StokPenyortiranController extends Controller
     {
         $this->authorize('view', StokGudang::class);
 
-        $data = StokGudang::where('status', 'penyortiran')->get();
+        $data = StokGudang::where('status', 'penyortiran')
+                ->where('jenis', 'Polos')
+                ->orWhere('jenis', 'Medium')
+                ->get();
+
+        return view('stok.penyortiran.index', compact('data'));
+    }
+
+    public function index2()
+    {
+        $this->authorize('view', StokGudang::class);
+
+        $data = StokGudang::where('status', 'penyortiran')
+                ->where('jenis', 'Super')
+                ->get();
 
         return view('stok.penyortiran.index', compact('data'));
     }

@@ -72,6 +72,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('account/profile', [ProfileController::class, 'index'])->name('profile');
   
   Route::resource('/stock/penyortiran', StokPenyortiranController::class)->except(['show', 'destroy']);
+  Route::get('/stock/penyortiran/sortir2', [StokPenyortiranController::class, 'index2'])->name('penyortiran.index2');
 
   Route::resource('/stock/produkJadi', StokProdukJadiController::class)->except(['show', 'destroy']);
 });

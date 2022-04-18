@@ -43,15 +43,26 @@
             </nav>
           </div>
 
-          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseStockJadi" aria-expanded="false" aria-controls="collapseLayouts">
+          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProcess2" aria-expanded="false" aria-controls="collapseProcess2">
             <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-            Stock Jadi
+            Processing II
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
-          <div class="collapse" id="collapseStockJadi" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-            <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="{{ route('penyortiran.index') }}">Penyortiran</a>
-              <a class="nav-link" href="{{ route('produkJadi.index') }}">Produk Jadi</a>
+          <div class="collapse" id="collapseProcess2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionProcess2">
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#process2CollapseSortir" aria-expanded="false" aria-controls="process2CollapseSortir">
+                    Sortir
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                </a>
+                <div class="collapse" id="process2CollapseSortir" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionProcess2">
+                    <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" href="{{ route('penyortiran.index') }}">Sortir I</a>
+                        <a class="nav-link" href="{{ route('penyortiran.index2') }}">Sortir II</a>
+                    </nav>
+                </div>
+                <a class="nav-link" href="{{ route('produkJadi.index') }}">
+                    Produk
+                </a>
             </nav>
           </div>
         </div>
