@@ -31,6 +31,11 @@ class UserPolicy
         return in_array($user->role, ['Admin', 'Karyawan']);
     }
 
+    public function viewPagePenjualan(User $user)
+    {
+        return in_array($user->role, ['Owner', 'Admin']);
+    }
+
     /**
      * Determine whether the user can create models.
      *

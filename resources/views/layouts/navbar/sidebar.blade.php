@@ -66,18 +66,20 @@
             </nav>
           </div>
 
+          @can('viewPagePenjualan', \App\Models\User::class)
           <div class="sb-sidenav-menu-heading">Sale</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePenjualan" aria-expanded="false" aria-controls="collapseLayouts">
+          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePenjualan" aria-expanded="false" aria-controls="collapseLayouts">
             <div class="sb-nav-link-icon"><i class="fas fa-cart-shopping"></i></div>
             Penjualan
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-            </a>
-            <div class="collapse" id="collapsePenjualan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">Penjualan</a>
-                <a class="nav-link" href="#">Rekap Penjualan</a>
-              </nav>
-            </div>
+          </a>
+          <div class="collapse" id="collapsePenjualan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+              <a class="nav-link" href="#">Penjualan</a>
+              <a class="nav-link" href="#">Rekap Penjualan</a>
+            </nav>
+          </div>
+          @endcan
         </div>
       </div>
       <div class="sb-sidenav-footer">
