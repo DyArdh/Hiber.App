@@ -11,13 +11,12 @@
             <div class="form-group row mb-4 px-3">
                 <label for="berat" class="form-label col-md-3">Berat</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control @error('berat') is-invalid @enderror" id="berat" name="berat" required/>
-                    
-                    @error('berat')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                    @enderror
+                    <select class="form-select" aria-label="select-role" id="berat" name="berat">
+                        <option value="5" selected>5</option>
+                        <option value="5">10</option>
+                        <option value="5">20</option>
+                        <option value="5">50</option>
+                    </select>
                 </div>
             </div>
             <div class="form-group row mb-4 px-3">

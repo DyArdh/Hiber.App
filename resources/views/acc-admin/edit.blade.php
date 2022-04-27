@@ -49,11 +49,10 @@
                 <label for="role" class="form-label col-md-3" >Role</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" id="role" name="role">
-                        <option selected>{{ $data->role }}</option>
-                        <option value="Admin" selected>
+                        <option value="Admin" @if($data->role == 'Admin') selected @endif>
                             Admin
                         </option>
-                        <option value="Karyawan">
+                        <option value="Karyawan" @if($data->role == 'Karyawan') selected @endif>
                             Karyawan
                         </option>
                     </select>

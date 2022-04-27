@@ -28,6 +28,9 @@
         referrerpolicy="no-referrer">
     </script>
 
+    {{-- DataTables --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
   </head>
   <body class="sb-nav-fixed">
     @include('layouts.navbar.top-navbar')
@@ -50,6 +53,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
     @yield('scripts')
   </body>
 </html>

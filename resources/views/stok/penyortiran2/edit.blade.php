@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
-    Ubah Data Stok Penyortiran 1
+    Ubah Data Stok Penyortiran 2
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
-        <form action="{{ route('penyortiran.update', $data->id) }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+        <form action="{{ route('penyortiran2.update', $data->id) }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group row mb-4 px-3">
@@ -36,17 +36,11 @@
             <div class="form-group row mb-4 px-3">
                 <label for="jenis" class="form-label col-md-3">Jenis</label>
                 <div class="col-md-9">
-                    <select class="form-select" aria-label="select-role" @error('jenis') is-invalid @enderror id="jenis" name="jenis" required/>
+                    <select class="form-select" aria-label="select-role" id="jenis" name="jenis" required/>
                         <option value="Polos" @if($data->status == 'Polos') selected @endif>Polos</option>
                         <option value="Medium" @if($data->status == 'Medium') selected @endif>Medium</option>
                         <option value="Super" @if($data->status == 'Super') selected @endif>Super</option>
                     </select>
-                    
-                    @error('jenis')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                    @enderror
                 </div>
             </div>
             <div class="form-group row mb-4 px-3">
@@ -65,7 +59,7 @@
                 </div>
             </div>
             <div class="col-md-12 mb-4 pb-4 px-3 d-flex justify-content-end">
-                <a href="{{ route('penyortiran.index') }}"><button type="button" class="btn back-btn me-3">
+                <a href="{{ route('penyortiran2.index') }}"><button type="button" class="btn back-btn me-3">
                     <i class="fa-solid fa-arrow-left"></i>
                     Kembali
                 </button></a>

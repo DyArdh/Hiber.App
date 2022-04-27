@@ -4,16 +4,6 @@
 
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Account Perusahaan</div>
     <div class="row">
-      @can('createPerusahaan', \App\Models\User::class)
-        <a href="{{ route('perusahaan.create') }}">
-          <button type="button" class="btn btn-primary my-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
-            <i class="fa-solid fa-pencil"></i>
-            <span class="ps-2 fw-bolder"> Tambah Akun</span>
-          </button>
-        </a>   
-      @endcan
-    </div>
-    <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
         <h4 class="pt-4 pb-3">Daftar Akun Perusahaan</h4>
         @if (session('success'))

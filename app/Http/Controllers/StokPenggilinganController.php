@@ -9,7 +9,7 @@ class StokPenggilinganController extends Controller
 {
     public function index()
     {
-        $data = StokGudang::where('status', '=', 'Penggilingan')->get();
+        $data = StokGudang::where('status', 'Penggilingan')->get();
         return view('stok.penggilingan.index', compact('data'));
     }
 
@@ -33,9 +33,18 @@ class StokPenggilinganController extends Controller
 
     public function editData(Request $request, $id)
     {
+        $this->authorize('update', StokGudang::class);
 
-        $data = StokGudang::find($id);
-        $data->update($request->all());
+        $validations = $request->validate([
+            'berat' => 'required',
+            'jenis' => 'max:255',
+            'status' => 'required|max:255',
+            'penanggung_jawab' => 'required|max:255',
+        ]);
+
+        $data = StokGudang::findOrFail($id);
+
+        $data->update($validations);
         return redirect()->route('stok-penggilingan')->with('success', 'Data berhasil diubah');
     }
 

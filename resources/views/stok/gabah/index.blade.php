@@ -8,7 +8,7 @@
       <a href="{{ route('gabah.create') }}">
         <button type="button" class="btn btn-primary my-4" id="tambah-gabah">
           <i class="fa-solid fa-pencil"></i>
-          <span class="ps-2 fw-bolder"> Tambah Stok Gabah</span>
+          <span class="ps-2 fw-bolder"> Tambah Stok Gudang</span>
         </button>
       </a>
     @endcan
@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
-    <h4 class="pt-4 pb-3">Daftar Stok Gabah</h4>
+    <h4 class="pt-4 pb-3">Daftar Stok Gudang</h4>
     @if (session('success'))
       <div class="modal fade success" id="modal-success" tabindex="-1" aria-labelledby="modal-successLabel" aria-hidden="true">
         <div class="modal-dialog">

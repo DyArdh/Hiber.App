@@ -78,4 +78,22 @@ class UserPolicy
     {
         return in_array($user->role, ['Karyawan', 'Admin', 'Owner']);
     }
+
+    /**
+     * Determine whether the user can delete the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\User  $model
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+
+    public function destroyAdmin(User $user)
+    {
+        return $user->role == 'Owner';
+    }
+
+    public function destroyKaryawan(User $user)
+    {
+        return $user->role == 'Admin';
+    }
 }

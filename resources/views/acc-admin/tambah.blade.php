@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
-    Tambah Account
+    Tambah Account Admin
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
@@ -53,19 +53,7 @@
                     No. HP tidak boleh kosong
                 </div>
             </div>
-            <div class="form-group row mb-4 px-3">
-                <label for="role" class="form-label col-md-3" >Role</label>
-                <div class="col-md-9">
-                    <select class="form-select" aria-label="select-role" id="role" name="role">
-                        <option value="Admin" selected>
-                            Admin
-                        </option>
-                        <option value="Karyawan">
-                            Karyawan
-                        </option>
-                    </select>
-                </div>
-            </div>
+            <input type="hidden" id="role" name="role" value="Admin">
             <div class="col-md-12 mb-4 pb-4 px-3 d-flex justify-content-end">
                 <a href="/account/admin"><button type="button" class="btn back-btn me-3">
                     <i class="fa-solid fa-arrow-left"></i>

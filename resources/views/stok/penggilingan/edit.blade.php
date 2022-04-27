@@ -11,10 +11,26 @@
             <div class="form-group row mb-4 px-3">
                 <label for="nama" class="form-label col-md-3">Berat</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" id="berat" name="berat" value="{{ $data->berat }}" required/>
+                    <select class="form-select" aria-label="select-role" id="berat" name="berat">
+                        <option value="5" @if($data->berat == 5) selected @endif>5</option>
+                        <option value="10" @if($data->berat == 10) selected @endif>10</option>
+                        <option value="20" @if($data->berat == 20) selected @endif>20</option>
+                        <option value="50" @if($data->berat == 50) selected @endif>50</option>
+                    </select>
                 </div>
                 <div class="invalid-feedback">
                     Berat tidak boleh kosong
+                </div>
+            </div>
+            <div class="form-group row mb-4 px-3">
+                <label for="jenis" class="form-label col-md-3">Jenis</label>
+                <div class="col-md-9">
+                    <select class="form-select" name="jenis" id="jenis">
+                        <option value="" selected>-</option>
+                        <option value="Polos">Polos</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Super">Super</option>
+                    </select>
                 </div>
             </div>
             <input type="hidden" id="penanggung_jawab" name="penanggung_jawab" value="{{ Auth::User()->nama }}">
@@ -22,13 +38,8 @@
                 <label for="status" class="form-label col-md-3" >Status</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" id="status" name="status">
-                        <option selected >{{ $data->status }}</option>
-                        <option value="Pengeringan">
-                            Pengeringan
-                        </option>
-                        <option value="Penggilingan">
-                            Penggilingan
-                        </option>
+                        <option value="Penggilingan" @if($data->status == 'Penggilingan') selected @endif>Penggilingan</option>
+                        <option value="Penyortiran" @if($data->status == 'Penyortiran') selected @endif>Penyortiran</option>
                     </select>
                 </div>
             </div>

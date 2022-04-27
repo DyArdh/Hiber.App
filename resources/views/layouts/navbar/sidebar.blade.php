@@ -37,7 +37,7 @@
           </a>
           <div class="collapse" id="collapseStock" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="{{ route('gabah.index') }}">Gabah</a>
+              <a class="nav-link" href="{{ route('gabah.index') }}">Gudang</a>
               <a class="nav-link" href="{{ route('stok-pengeringan') }}">Pengeringan</a>
               <a class="nav-link" href="{{ route('stok-penggilingan') }}">Penggilingan</a>
             </nav>
@@ -57,7 +57,7 @@
                 <div class="collapse" id="process2CollapseSortir" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionProcess2">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="{{ route('penyortiran.index') }}">Sortir I</a>
-                        <a class="nav-link" href="{{ route('penyortiran.index2') }}">Sortir II</a>
+                        <a class="nav-link" href="{{ route('penyortiran2.index') }}">Sortir II</a>
                     </nav>
                 </div>
                 <a class="nav-link" href="{{ route('produkJadi.index') }}">

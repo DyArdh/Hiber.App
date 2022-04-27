@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\StokGudang;
 use Illuminate\Http\Request;
 
-class StokPenyortiranController extends Controller
+class StokPenyortiran2Controller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,10 @@ class StokPenyortiranController extends Controller
         $this->authorize('view', StokGudang::class);
 
         $data = StokGudang::where('status', 'penyortiran')
-                ->where('jenis', 'Polos')
-                ->orWhere('jenis', 'Medium')
+                ->where('jenis', 'Super')
                 ->get();
 
-        return view('stok.penyortiran.index', compact('data'));
+        return view('stok.penyortiran2.index', compact('data'));
     }
 
     /**
@@ -33,7 +32,7 @@ class StokPenyortiranController extends Controller
     {
         $this->authorize('create', StokGudang::class);
 
-        return view('stok.penyortiran.create');
+        return view('stok.penyortiran2.create');
     }
 
     /**
@@ -55,7 +54,7 @@ class StokPenyortiranController extends Controller
         $validations['status'] = 'penyortiran';
 
         StokGudang::create($validations);
-        return redirect()->route('penyortiran.index')->with('success', 'Data berhasil ditambahkan');
+        return redirect()->route('penyortiran2.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +68,7 @@ class StokPenyortiranController extends Controller
         $this->authorize('update', StokGudang::class);
 
         $data = StokGudang::findOrFail($id);
-        return view('stok.penyortiran.edit', compact('data'));
+        return view('stok.penyortiran2.edit', compact('data'));
     }
 
     /**
@@ -95,6 +94,6 @@ class StokPenyortiranController extends Controller
         $data = StokGudang::findOrFail($id);
 
         $data->update($validations);
-        return redirect()->route('penyortiran.index')->with('success', 'Data berhasil diubah');
+        return redirect()->route('penyortiran2.index')->with('success', 'Data berhasil diubah');
     }
 }

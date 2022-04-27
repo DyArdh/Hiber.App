@@ -2,7 +2,7 @@
 
 @section('content')
  
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Penyortiran</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Penyortiran 1</div>
     <div class="row">
       @can('create', \App\Models\StokGudang::class)
         <a href="{{ route('penyortiran.create') }}">
@@ -15,7 +15,7 @@
     </div>
     <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
-        <h4 class="pt-4 pb-3">Daftar Stok Penyortiran</h4>
+        <h4 class="pt-4 pb-3">Daftar Stok Penyortiran 1</h4>
         @if (session('success'))
           <div class="modal fade success" id="modal-success" tabindex="-1" aria-labelledby="modal-successLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -36,7 +36,7 @@
         @endif
 
         <div class="table-responsive w-auto">
-          <table class="table table-bordered" id="tableAdmin">
+          <table class="table table-bordered">
             <thead>
               <th scope="col">Id</th>
               <th scope="col">Tanggal</th>

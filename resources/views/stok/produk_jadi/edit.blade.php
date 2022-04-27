@@ -12,16 +12,22 @@
             <div class="form-group row mb-4 px-3">
                 <label for="nama" class="form-label col-md-3">Berat</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" @error('berat') is-invalid @enderror id="berat" name="berat" value="{{ $data->berat }}" required/>
+                    <select class="form-select" aria-label="select-role" id="berat" name="berat">
+                        <option value="5" @if($data->berat == 5) selected @endif>5</option>
+                        <option value="10" @if($data->berat == 10) selected @endif>10</option>
+                        <option value="20" @if($data->berat == 20) selected @endif>20</option>
+                        <option value="50" @if($data->berat == 50) selected @endif>50</option>
+                    </select>
                 </div>
-                @error('berat')
-                    <div class="invalid-feedback">
-                      {{ $message }}
-                    </div>
-                @enderror
             </div>
             <div class="form-group row mb-4 px-3">
-                <label for="merk" class="form-label col-md-3">Berat</label>
+                <label for="jenis" class="form-label col-md-3">Jenis</label>
+                <div class="col-md-9">
+                    <input type="text" class="form-control" @error('jenis') is-invalid @enderror id="jenis" name="jenis" value="{{ $data->jenis }}" disabled readonly/>
+                </div>
+            </div>
+            <div class="form-group row mb-4 px-3">
+                <label for="merk" class="form-label col-md-3">Merk</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control" @error('merk') is-invalid @enderror id="merk" name="merk" value="{{ $data->merk }}" required/>
                 </div>
