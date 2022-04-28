@@ -13,63 +13,67 @@
                 <label for="nama" class="form-label col-md-3">Nama Lengkap</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control @error('nama') is-invalid @enderror" id="nama" name="nama" value="{{ $data->nama }}" required/>
+                    
+                    @error('nama')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
-                @error('nama')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="alamat" class="form-label col-md-3">Alamat</label>
                 <div class="col-md-9">
                     <textarea type="text" class="form-control @error('alamat') is-invalid @enderror" id="alamat" name="alamat" rows="3" required>{{ $data->alamat }}</textarea>  
+                    
+                    @error('alamat')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
-                @error('alamat')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="email" class="form-label col-md-3">Email</label>
                 <div class="col-md-9">
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ $data->email }}" required />
+                    
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 
-                @error('email')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="password" class="form-label col-md-3">Password</label>
                 <div class="col-md-9">
                     <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" value="{{ $data->password }}" required />
+                    
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
                 
-                @error('password')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="no_hp" class="form-label col-md-3">No. HP</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp" name="no_hp" value="{{ $data->no_hp }}" required />
+                    
+                    @error('no_hp')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
-                @error('no_hp')
-                <div class="invalid-feedback">
-                    {{ $message }}
-                </div>
-                @enderror
             </div>
-            <input type="hidden" id="role" name="role" value="Karyawan">
             <div class="col-md-12 mb-4 pb-4 px-3 d-flex justify-content-end">
                 <a href="{{ route('karyawan.index') }}"><button type="button" class="btn back-btn me-3">
                     <i class="fa-solid fa-arrow-left"></i>

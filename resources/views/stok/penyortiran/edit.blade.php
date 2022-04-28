@@ -37,9 +37,9 @@
                 <label for="jenis" class="form-label col-md-3">Jenis</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" @error('jenis') is-invalid @enderror id="jenis" name="jenis" required/>
-                        <option value="Polos" @if($data->status == 'Polos') selected @endif>Polos</option>
-                        <option value="Medium" @if($data->status == 'Medium') selected @endif>Medium</option>
-                        <option value="Super" @if($data->status == 'Super') selected @endif>Super</option>
+                        <option value="Polos" @if($data->jenis == 'Polos') selected @endif>Polos</option>
+                        <option value="Medium" @if($data->jenis == 'Medium') selected @endif>Medium</option>
+                        <option value="Super" @if($data->jenis == 'Super') selected @endif>Super</option>
                     </select>
                     
                     @error('jenis')

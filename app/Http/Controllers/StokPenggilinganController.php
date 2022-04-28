@@ -35,12 +35,17 @@ class StokPenggilinganController extends Controller
     {
         $this->authorize('update', StokGudang::class);
 
-        $validations = $request->validate([
+        $rules = [
             'berat' => 'required',
-            'jenis' => 'max:255',
             'status' => 'required|max:255',
             'penanggung_jawab' => 'required|max:255',
-        ]);
+        ];
+
+        if ($request->status == 'Penyortiran') {
+            $rules['jenis'] = 'required|max:255';
+        }
+
+        $validations = $request->validate($rules);
 
         $data = StokGudang::findOrFail($id);
 

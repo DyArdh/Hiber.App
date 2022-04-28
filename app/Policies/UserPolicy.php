@@ -23,12 +23,12 @@ class UserPolicy
 
     public function viewAdmin(User $user)
     {
-        return in_array($user->role, ['Owner', 'Admin']);
+        return $user->role == 'Owner';
     }
 
     public function viewKaryawan(User $user)
     {
-        return in_array($user->role, ['Admin', 'Karyawan']);
+        return $user->role == 'Admin';
     }
 
     public function viewPagePenjualan(User $user)

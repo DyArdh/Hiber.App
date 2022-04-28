@@ -43,7 +43,6 @@
               <th scope="col">Alamat</th>
               <th scope="col">Email</th>
               <th scope="col">No. HP</th>
-              <th scope="col">Role</th>
               @can('updateKaryawan', \App\Models\User::class)
                 <th scope="col">Action</th>
               @endcan
@@ -56,7 +55,6 @@
                   <td> {{ $row->alamat }} </td>
                   <td> {{ $row->email }} </td>
                   <td> {{ $row->no_hp }} </td>
-                  <td> {{ $row->role }} </td>
                   @can('updateKaryawan', \App\Models\User::class)
                     <td class="d-flex">
                     <a href="{{ route('karyawan.edit', $row->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>

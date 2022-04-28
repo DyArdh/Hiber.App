@@ -14,11 +14,13 @@
             Perusahaan
           </a>
 
+          @if (Auth::user()->role != 'Karyawan')
           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
             Accounts
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
+          @endif
           <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
               @can('viewAdmin', \App\Models\User::class)
@@ -32,7 +34,7 @@
 
           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseStock" aria-expanded="false" aria-controls="collapseLayouts">
             <div class="sb-nav-link-icon"><i class="fas fa-wheat-awn"></i></div>
-            Stock
+              Processing I
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
           <div class="collapse" id="collapseStock" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
@@ -45,7 +47,7 @@
 
           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProcess2" aria-expanded="false" aria-controls="collapseProcess2">
             <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
-            Processing II
+              Processing II
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
           </a>
           <div class="collapse" id="collapseProcess2" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">

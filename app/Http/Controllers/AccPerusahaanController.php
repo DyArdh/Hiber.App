@@ -21,43 +21,6 @@ class AccPerusahaanController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        $this->authorize('createPerusahaan', User::class);
-
-        return view('accounts.perusahaan.tambah');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $this->authorize('createPerusahaan', User::class);
-
-        $validations = $request->validate([
-            'nama' => 'required|max:255',
-            'alamat' => 'required|max:255',
-            'email' => 'required|unique:users|email:dns|max:255',
-            'no_hp' => 'required|max:255',
-            'password' => 'required|max:255',
-        ]);
-
-        $validations['role'] = 'Owner';
-        $validations['password'] = bcrypt($validations['password']);
-
-        User::create($validations);
-        return redirect()->route('perusahaan.index')->with('success', 'Data berhasil ditambahkan');
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\User  $user
@@ -83,16 +46,24 @@ class AccPerusahaanController extends Controller
     {
         $this->authorize('updatePerusahaan', User::class);
 
-        $validations = $request->validate([
+        $rule = [
             'nama' => 'required|max:255',
             'alamat' => 'required|max:255',
             'email' => 'required|email:dns|max:255|unique:users,email,' . $id,
-            'no_hp' => 'required|max:12',
-            'password' => 'required|max:255',
-            'role' => 'required|max:255',
-        ]);
+            'no_hp' => 'required|numeric|digits_between:10,13|unique:users,no_hp,' . $id,
+        ];
 
-        $validations['password'] = bcrypt($validations['password']);
+        $data = User::findOrFail($id);
+
+        if ($data['password'] != $request->password) {
+            $rule['password'] = 'required|min:8|max:255';
+
+            $validations = $request->validate($rule);
+
+            $validations['password'] = bcrypt($validations['password']);
+        } else {
+            $validations = $request->validate($rule);
+        }
 
         User::findOrFail($id)->update($validations);
 

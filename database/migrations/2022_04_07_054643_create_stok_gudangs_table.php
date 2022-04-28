@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('berat');
             $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan', 'Penyortiran', 'Produk Jadi']);
             $table->string('penanggung_jawab');
-            $table->enum('jenis', ['Polos', 'Medium', 'Super']);
+            $table->enum('jenis', ['Polos', 'Medium', 'Super'])->nullable();
             $table->string('merk')->nullable();
             $table->bigInteger('harga')->nullable();
             $table->timestamps();

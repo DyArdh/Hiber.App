@@ -20,6 +20,22 @@
                 </div>
             </div>
             <div class="form-group row mb-4 px-3">
+                <label for="jenis" class="form-label col-md-3">Jenis</label>
+                <div class="col-md-9">
+                    <select class="form-select" aria-label="select-role" @error('jenis') is-invalid @enderror id="jenis" name="jenis" required/>
+                        <option value="Polos">Polos</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Super">Super</option>
+                    </select>
+                    
+                    @error('jenis')
+                    <div class="invalid-feedback">
+                      {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row mb-4 px-3">
                 <label for="merk" class="form-label col-md-3">Merk</label>
                 <div class="col-md-9">
                     <input type="text" class="form-control @error('merk') is-invalid @enderror" id="merk" name="merk" required/>

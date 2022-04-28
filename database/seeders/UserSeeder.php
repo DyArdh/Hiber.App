@@ -18,8 +18,8 @@ class UserSeeder extends Seeder
             'nama' => 'Andiko Yoga',
             'alamat' => 'Ds.Banaran',
             'email' => 'rizuna30@gmail.com',
-            'no_hp' => '085157506552',
-            'password' => bcrypt('12345'),
+            'no_hp' => '085157506551',
+            'password' => bcrypt('rizuna12345'),
             'role' => 'Owner',
         ]);
 
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'alamat' => 'Ds.Banaran',
             'email' => 'rizuna31@gmail.com',
             'no_hp' => '085157506552',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('rizuna12345'),
             'role' => 'Admin',
         ]);
 
@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
             'nama' => 'Yoga',
             'alamat' => 'Ds.Banaran',
             'email' => 'rizuna32@gmail.com',
-            'no_hp' => '085157506552',
-            'password' => bcrypt('12345'),
+            'no_hp' => '085157506553',
+            'password' => bcrypt('rizuna12345'),
             'role' => 'Karyawan',
         ]);
     }

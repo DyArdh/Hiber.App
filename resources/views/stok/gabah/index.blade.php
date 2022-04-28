@@ -1,7 +1,7 @@
 @extends('layouts.main-layout')
 
 @section('content')
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Stok Gabah</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Stok Gudang</div>
 <div class="row">
   <div class="add-admin col-xl-4 col-md-6">
     @can('create', \App\Models\StokGudang::class)

@@ -45,6 +45,7 @@ class StokProdukJadiController extends Controller
 
         $validations = $request->validate([
             'berat' => 'required|numeric',
+            'jenis' => 'required',
             'merk' => 'required|max:255',
             'harga' => 'required|numeric',
             'penanggung_jawab' => 'required|max:255',
@@ -54,17 +55,6 @@ class StokProdukJadiController extends Controller
 
         StokGudang::create($validations);
         return redirect()->route('produkJadi.index')->with('success', 'Data berhasil ditambahkan');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
     /**
@@ -103,16 +93,5 @@ class StokProdukJadiController extends Controller
 
         $data->update($validations);
         return redirect()->route('produkJadi.index')->with('success', 'Data berhasil diubah');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

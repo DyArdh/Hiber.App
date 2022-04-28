@@ -18,19 +18,22 @@
                         <option value="50" @if($data->berat == 50) selected @endif>50</option>
                     </select>
                 </div>
-                <div class="invalid-feedback">
-                    Berat tidak boleh kosong
-                </div>
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="jenis" class="form-label col-md-3">Jenis</label>
                 <div class="col-md-9">
-                    <select class="form-select" name="jenis" id="jenis">
+                    <select class="form-select @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
                         <option value="" selected>-</option>
                         <option value="Polos">Polos</option>
                         <option value="Medium">Medium</option>
                         <option value="Super">Super</option>
                     </select>
+
+                    @error('jenis')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
             </div>
             <input type="hidden" id="penanggung_jawab" name="penanggung_jawab" value="{{ Auth::User()->nama }}">

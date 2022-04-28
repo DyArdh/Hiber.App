@@ -17,9 +17,10 @@ class StokPenyortiranController extends Controller
         $this->authorize('view', StokGudang::class);
 
         $data = StokGudang::where('status', 'penyortiran')
-                ->where('jenis', 'Polos')
-                ->orWhere('jenis', 'Medium')
-                ->get();
+            ->where(function ($query) {
+                $query->where('jenis', 'Polos')
+                    ->orWhere('jenis', 'Medium');
+            })->get();
 
         return view('stok.penyortiran.index', compact('data'));
     }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -47,8 +46,8 @@ class AccAdminController extends Controller
             'nama' => 'required|max:255',
             'alamat' => 'required|max:255',
             'email' => 'required|unique:users|email:dns|max:255',
-            'no_hp' => 'required|max:255',
-            'password' => 'required|max:255',
+            'no_hp' => 'required|numeric|digits_between:10,13|unique:users',
+            'password' => 'required|min:8|max:255',
             'role' => 'required|max:255',
         ]);
 
@@ -83,20 +82,27 @@ class AccAdminController extends Controller
     {
         $this->authorize('updateAdmin', User::class);
 
-        $validations = $request->validate([
+        $rule = [
             'nama' => 'required|max:255',
             'alamat' => 'required|max:255',
-            'email' => 'required|email:dns|max:255|unique:users,email,'. $id,
-            'no_hp' => 'required|max:255',
-            'password' => 'required|max:255',
-            'role' => 'required|max:255',
-        ]);
+            'email' => 'required|email:dns|max:255|unique:users,email,' . $id,
+            'no_hp' => 'required|numeric|digits_between:10,13|unique:users,no_hp,' . $id,
+        ];
 
-        $validations['password'] = bcrypt($validations['password']);
-        
         $data = User::findOrFail($id);
-        
-        $data->update($validations);
+
+        if ($data['password'] != $request->password) {
+            $rule['password'] = 'required|min:8|max:255';
+
+            $validations = $request->validate($rule);
+
+            $validations['password'] = bcrypt($validations['password']);
+        } else {
+            $validations = $request->validate($rule);
+        }
+
+        User::findOrFail($id)->update($validations);
+
         return redirect()->route('admin.index')->with('success', 'Data berhasil diubah');
     }
 
