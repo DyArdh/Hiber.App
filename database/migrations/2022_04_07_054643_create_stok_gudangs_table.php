@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('stok_gudangs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('merk_id')->nullable();
             $table->integer('berat');
-            $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan', 'Penyortiran', 'Produk Jadi']);
+            $table->enum('status', ['Gabah', 'Pengeringan', 'Penggilingan', 'Penyortiran', 'Produk Jadi', 'Terjual']);
             $table->string('penanggung_jawab');
             $table->enum('jenis', ['Polos', 'Medium', 'Super'])->nullable();
-            $table->string('merk')->nullable();
             $table->bigInteger('harga')->nullable();
             $table->timestamps();
         });

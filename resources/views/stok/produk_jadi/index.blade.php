@@ -4,14 +4,24 @@
  
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Produk Jadi</div>
     <div class="row">
-      @can('create', \App\Models\StokGudang::class)
-        <a href="{{ route('produkJadi.create') }}">
-          <button type="button" class="btn btn-primary my-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
-            <i class="fa-solid fa-pencil"></i>
-            <span class="ps-2 fw-bolder"> Tambah Stok Produk Jadi</span>
-          </button>
-        </a>   
-      @endcan
+      <div class="col-md-12 d-flex justify-content-between">
+        @can('create', \App\Models\StokGudang::class)
+          <a href="{{ route('produkJadi.create') }}">
+            <button type="button" class="btn btn-primary my-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
+              <i class="fa-solid fa-pencil"></i>
+              <span class="ps-2 fw-bolder"> Tambah Stok Produk Jadi</span>
+            </button>
+          </a>   
+        @endcan
+        @can('view', \App\Models\HargaProduct::class)
+          <a href="{{ route('harga.index') }}">
+            <button type="button" class="btn btn-primary my-4" id="tambah-acc">
+              <i class="fa-solid fa-sack-dollar"></i>
+              <span class="ps-2 fw-bolder"> Daftar Harga</span>
+            </button>
+          </a>
+        @endcan
+      </div>
     </div>
     <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
@@ -54,7 +64,7 @@
                   <td>{{ $row->id }}</td>
                   <td> {{ $row->updated_at }} </td>
                   <td> {{ $row->berat }} </td>
-                  <td> {{ $row->merk }} </td>
+                  <td> {{ $row->merk_id }} </td>
                   <td> {{ $row->harga }} </td>
                   <td> {{ $row->penanggung_jawab }} </td>
                   @can('update', \App\Models\StokGudang::class)

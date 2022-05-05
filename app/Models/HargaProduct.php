@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\HargaProduct;
+use App\Models\StokGudang;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class StokGudang extends Model
+class HargaProduct extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $table = 'stok_gudangs';
+    protected $table = 'harga_products';
 
-    public function hargaProduct()
+    public function stokgudang()
     {
-        return $this->belongsTo(HargaProduct::class);
+        return $this->hasMany(StokGudang::class);
     }
 }

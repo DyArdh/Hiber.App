@@ -12,10 +12,10 @@
                 <label for="berat" class="form-label col-md-3">Berat</label>
                 <div class="col-md-9">
                     <select class="form-select" aria-label="select-role" id="berat" name="berat">
-                        <option value="5" selected>5</option>
-                        <option value="5">10</option>
-                        <option value="5">20</option>
-                        <option value="5">50</option>
+                        <option value="5" data-weight="5" selected>5</option>
+                        <option value="10" data-weight="10">10</option>
+                        <option value="20" data-weight="20">20</option>
+                        <option value="50" data-weight="50">50</option> 
                     </select>
                 </div>
             </div>
@@ -36,11 +36,15 @@
                 </div>
             </div>
             <div class="form-group row mb-4 px-3">
-                <label for="merk" class="form-label col-md-3">Merk</label>
+                <label for="merk_id" class="form-label col-md-3">Merk</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control @error('merk') is-invalid @enderror" id="merk" name="merk" required/>
+                    <select class="form-select" aria-label="select-role" @error('merk_id') is-invalid @enderror id="merk_id" name="merk_id" required/>
+                        @foreach ($data as $row)
+                            <option data-price="{{ $row->harga }}" value="{{ $row->id }}">{{ $row->merk }}</option>
+                        @endforeach
+                    </select>
                     
-                    @error('merk')
+                    @error('merk_id')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
@@ -72,4 +76,16 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    let sel = document.getElementById('merk_id');
+    sel.addEventListener('click', function (e) {
+        let ber = document.getElementById('berat')
+        let weight = ber.options[ber.selectedIndex].value;
+        let price = e.srcElement.selectedOptions["0"].dataset.price;
+        document.getElementById('harga').value = price * weight;
+    });
+</script>
 @endsection

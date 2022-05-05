@@ -8,11 +8,13 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\StokGabahController;
 use App\Http\Controllers\AccKaryawanController;
 use App\Http\Controllers\AccPerusahaanController;
+use App\Http\Controllers\HargaProductController;
 use App\Http\Controllers\StokProdukJadiController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenyortiranController;
 use App\Http\Controllers\StokPenggilinganController;
 use App\Http\Controllers\StokPenyortiran2Controller;
+use App\Models\HargaProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,4 +66,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('/stock/penyortiran2', StokPenyortiran2Controller::class)->except(['show', 'destroy']);
 
   Route::resource('/stock/produkJadi', StokProdukJadiController::class)->except(['show', 'destroy']);
+
+  Route::resource('/stock/produkJadi/harga', HargaProductController::class)->except(['show', 'destroy']);
+  Route::get('/stock/produkJadi/harga/{id}/delete', [HargaProductController::class, 'destroy']);
 });

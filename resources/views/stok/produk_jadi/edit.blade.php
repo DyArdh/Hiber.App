@@ -27,15 +27,20 @@
                 </div>
             </div>
             <div class="form-group row mb-4 px-3">
-                <label for="merk" class="form-label col-md-3">Merk</label>
+                <label for="merk_id" class="form-label col-md-3">Merk</label>
                 <div class="col-md-9">
-                    <input type="text" class="form-control" @error('merk') is-invalid @enderror id="merk" name="merk" value="{{ $data->merk }}" required/>
-                </div>
-                @error('merk')
+                    <select class="form-select" aria-label="select-role" @error('merk_id') is-invalid @enderror id="merk_id" name="merk_id" required/>
+                        @foreach ($merk as $row)
+                            <option data-price="{{ $row->harga }}" value="{{ $row->id }}" @if($data->merk_id == $row->id) selected @endif>{{ $row->merk }}</option>
+                        @endforeach
+                    </select>
+                    
+                    @error('merk_id')
                     <div class="invalid-feedback">
                       {{ $message }}
                     </div>
-                @enderror
+                    @enderror
+                </div>
             </div>
             <div class="form-group row mb-4 px-3">
                 <label for="nama" class="form-label col-md-3">Harga</label>
@@ -61,4 +66,16 @@
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    let sel = document.getElementById('merk_id');
+    sel.addEventListener('click', function (e) {
+        let ber = document.getElementById('berat')
+        let weight = ber.options[ber.selectedIndex].value;
+        let price = e.srcElement.selectedOptions["0"].dataset.price;
+        document.getElementById('harga').value = price * weight;
+    });
+</script>
 @endsection

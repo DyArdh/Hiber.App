@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\StokGudang;
+use App\Models\HargaProduct;
 use Illuminate\Http\Request;
 
 class StokPenyortiran2Controller extends Controller
@@ -68,7 +69,8 @@ class StokPenyortiran2Controller extends Controller
         $this->authorize('update', StokGudang::class);
 
         $data = StokGudang::findOrFail($id);
-        return view('stok.penyortiran2.edit', compact('data'));
+        $merk = HargaProduct::all();
+        return view('stok.penyortiran2.edit', compact('data', 'merk'));
     }
 
     /**
@@ -85,7 +87,7 @@ class StokPenyortiran2Controller extends Controller
         $validations = $request->validate([
             'berat' => 'required',
             'jenis' => 'required|max:255',
-            'merk' => 'max:255',
+            'merk_id' => 'max:255',
             'harga' => 'max:255',
             'status' => 'required|max:255',
             'penanggung_jawab' => 'required|max:255',

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HargaProduct;
 use App\Models\StokGudang;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class StokProdukJadiController extends Controller
     {
         $this->authorize('view', StokGudang::class);
 
-        $data = StokGudang::where('status', 'Produk Jadi')->get();
+        $data = StokGudang::where('status', 'Produk Jadi')->with('hargaProduct')->get();
 
         return view('stok.produk_jadi.index', compact('data'));
     }
@@ -30,7 +31,9 @@ class StokProdukJadiController extends Controller
     {
         $this->authorize('create', StokGudang::class);
 
-        return view('stok.produk_jadi.create');
+        $data = HargaProduct::all();
+
+        return view('stok.produk_jadi.create', compact('data'));
     }
 
     /**
@@ -46,7 +49,7 @@ class StokProdukJadiController extends Controller
         $validations = $request->validate([
             'berat' => 'required|numeric',
             'jenis' => 'required',
-            'merk' => 'required|max:255',
+            'merk_id' => 'required',
             'harga' => 'required|numeric',
             'penanggung_jawab' => 'required|max:255',
         ]);
@@ -68,7 +71,8 @@ class StokProdukJadiController extends Controller
         $this->authorize('update', StokGudang::class);
 
         $data = StokGudang::findOrFail($id);
-        return view('stok.produk_jadi.edit', compact('data'));
+        $merk = HargaProduct::all();
+        return view('stok.produk_jadi.edit', compact('data', 'merk'));
     }
 
     /**
@@ -84,7 +88,7 @@ class StokProdukJadiController extends Controller
 
         $validations = $request->validate([
             'berat' => 'required|numeric',
-            'merk' => 'required|max:255',
+            'merk_id' => 'required',
             'harga' => 'required|numeric',
             'penanggung_jawab' => 'required|max:255',
         ]);
