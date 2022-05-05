@@ -6,7 +6,7 @@
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
-        <form action="{{ route('produkJadi.store') }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+        <form id="save-produk-form" action="{{ route('produkJadi.store') }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row mb-4 px-3">
                 <label for="berat" class="form-label col-md-3">Berat</label>
@@ -69,7 +69,7 @@
                     <i class="fa-solid fa-arrow-left"></i>
                     Kembali
                 </button></a>
-                <button type="submit" class="btn simpan-btn btn-primary">
+                <button onclick="return false" class="btn simpan-btn btn-primary">
                     Simpan
                 </button>
             </div>
@@ -80,6 +80,24 @@
 
 @section('scripts')
 <script>
+    $(document).ready(function(){
+        $('.simpan-btn').click(function () {
+            swal({
+                    text: "Apakah anda ingin menyimpan data?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+            .then((willSave) => {
+                if (willSave) {
+                    $('#save-produk-form').submit();
+                } else {
+                    swal("Data tidak disimpan!");
+                }
+            });
+        });
+    });
+
     let sel = document.getElementById('merk_id');
     sel.addEventListener('click', function (e) {
         let ber = document.getElementById('berat')

@@ -6,7 +6,7 @@
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
-        <form action="/stock/penggilingan/createData" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+        <form id="save-penggilingan-form" action="/stock/penggilingan/createData" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group row mb-4 px-3">
                 <label for="nama" class="form-label col-md-3">Berat</label>
@@ -26,11 +26,33 @@
                     <i class="fa-solid fa-arrow-left"></i>
                     Kembali
                 </button></a>
-                <button type="submit" class="btn simpan-btn btn-primary">
+                <button onclick="return false" class="btn simpan-btn btn-primary">
                     Simpan
                 </button>
             </div>
         </form>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+  $(document).ready(function(){
+    $('.simpan-btn').click(function () {
+      swal({
+            text: "Apakah anda ingin menyimpan data?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+      .then((willSave) => {
+        if (willSave) {
+          $('#save-penggilingan-form').submit();
+        } else {
+          swal("Data tidak disimpan!");
+        }
+      });
+    });
+  });
+</script>
 @endsection

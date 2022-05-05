@@ -40,7 +40,7 @@ Route::middleware(['auth'])->group(function () {
 
   Route::resource('/account/perusahaan', AccPerusahaanController::class)->except(['show', 'destroy']);
 
-  Route::resource('/stock/gabah', StokGabahController::class)->except(['show', 'destroy']);
+  Route::resource('/stock/gabah', StokGabahController::class)->except(['show']);
 
   Route::get('/stok/pengeringan', [StokPengeringanController::class, 'index'])->name('stok-pengeringan');
   Route::get('/stock/pengeringan/create', [StokPengeringanController::class, 'createData'])->name('createPengeringan');
@@ -61,9 +61,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/account/admin/{id}/delete', [AccAdminController::class, 'destroy']);
   Route::resource('/account/karyawan', AccKaryawanController::class)->except(['show', 'destroy']);
   Route::get('/account/karyawan/{id}/delete', [AccKaryawanController::class, 'destroy']);
-  
-  Route::resource('/stock/penyortiran', StokPenyortiranController::class)->except(['show', 'destroy']);
-  Route::resource('/stock/penyortiran2', StokPenyortiran2Controller::class)->except(['show', 'destroy']);
+
+  Route::resource('/stock/penyortiran', StokPenyortiranController::class)->except(['show']);
+  Route::resource('/stock/penyortiran2', StokPenyortiran2Controller::class)->except(['show']);
 
   Route::resource('/stock/produkJadi', StokProdukJadiController::class)->except(['show', 'destroy']);
 

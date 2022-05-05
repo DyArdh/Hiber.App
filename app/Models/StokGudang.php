@@ -15,6 +15,6 @@ class StokGudang extends Model
 
     public function hargaProduct()
     {
-        return $this->belongsTo(HargaProduct::class);
+        return $this->belongsTo(HargaProduct::class, 'merk_id');
     }
 }

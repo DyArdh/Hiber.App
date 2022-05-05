@@ -18,8 +18,8 @@ class StokPenyortiran2Controller extends Controller
         $this->authorize('view', StokGudang::class);
 
         $data = StokGudang::where('status', 'penyortiran')
-                ->where('jenis', 'Super')
-                ->get();
+            ->where('jenis', 'Super')
+            ->get();
 
         return view('stok.penyortiran2.index', compact('data'));
     }
@@ -97,5 +97,21 @@ class StokPenyortiran2Controller extends Controller
 
         $data->update($validations);
         return redirect()->route('penyortiran2.index')->with('success', 'Data berhasil diubah');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $this->authorize('update', StokGudang::class);
+
+        $data = StokGudang::findOrFail($id);
+
+        $data->delete();
+        return redirect()->route('penyortiran2.index');
     }
 }

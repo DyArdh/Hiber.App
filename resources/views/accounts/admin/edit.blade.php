@@ -6,7 +6,7 @@
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
-        <form action="{{ route('admin.update', $data->id) }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
+        <form id="save-admin-form" action="{{ route('admin.update', $data->id) }}" class="pt-5 px-md-3" method="post" enctype="multipart/form-data">
             @method('PUT')
             @csrf
             <div class="form-group row mb-4 px-3">
@@ -75,12 +75,33 @@
                     <i class="fa-solid fa-arrow-left"></i>
                     Kembali
                 </button></a>
-                <button type="submit" class="btn simpan-btn btn-primary">
+                <button onclick="return false" class="btn simpan-btn btn-primary">
                     Simpan
                 </button>
             </div>
         </form>
     </div>
 </div>
+@endsection
 
+@section('scripts')
+<script>
+    $(document).ready(function(){
+        $('.simpan-btn').click(function () {
+            swal({
+                    text: "Apakah anda ingin menyimpan data?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+            .then((willSave) => {
+                if (willSave) {
+                    $('#save-admin-form').submit();
+                } else {
+                    swal("Data tidak disimpan!");
+                }
+            });
+        });
+    });
+</script>
 @endsection

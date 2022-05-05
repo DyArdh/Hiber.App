@@ -64,7 +64,7 @@
                   <td>{{ $row->id }}</td>
                   <td> {{ $row->updated_at }} </td>
                   <td> {{ $row->berat }} </td>
-                  <td> {{ $row->merk_id }} </td>
+                  <td> {{ $row->hargaProduct->merk }} </td>
                   <td> {{ $row->harga }} </td>
                   <td> {{ $row->penanggung_jawab }} </td>
                   @can('update', \App\Models\StokGudang::class)

@@ -59,6 +59,11 @@
             @can('update', $row)
               <td>
                 <a href="{{ route('gabah.edit', $row->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                <form id="delete-gabah-form" action="{{ route('gabah.destroy', $row->id) }}" method="POST">
+                  @csrf
+                  @method('DELETE')
+                  <button onclick="return false" class="delete-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-trash-can"></i></button>
+                </form>
               </td>
             @endcan
           </tr>
@@ -76,6 +81,25 @@
     if ($('.success').length) {
       $('#modal-success').modal('show');
     }
+
+    $('.delete-btn').click(function () {
+      swal({
+            text: "Apakah anda ingin menghapus data?",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+      .then((willDelete) => {
+        if (willDelete) {
+          $('#delete-gabah-form').submit();
+          swal("Data berhasil dihapus!", {
+            icon: "success",
+          });
+        } else {
+          swal("Data tidak dihapus!");
+        }
+      });
+    });
   });
 </script>
 @endsection

@@ -33,7 +33,6 @@ class StokPengeringanController extends Controller
 
     public function editData(Request $request, $id)
     {
-
         $data = StokGudang::find($id);
         $data->update($request->all());
         return redirect()->route('stok-pengeringan')->with('success', 'Data berhasil diubah');

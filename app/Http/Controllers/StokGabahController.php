@@ -91,4 +91,20 @@ class StokGabahController extends Controller
         $data->update($validations);
         return redirect()->route('gabah.index')->with('success', 'Data berhasil diubah');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $this->authorize('update', StokGudang::class);
+
+        $data = StokGudang::findOrFail($id);
+
+        $data->delete();
+        return redirect()->route('gabah.index');
+    }
 }
