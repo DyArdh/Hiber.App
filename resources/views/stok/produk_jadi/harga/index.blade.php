@@ -53,7 +53,7 @@
                         <td> {{ $value->harga }} </td>
                         @can('update', \App\Models\HargaProduct::class)
                           <td class="d-flex">
-                            <a href="{{ route('admin.edit', $value->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>  
+                            <a href="{{ route('harga.edit', $value->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>  
                             <button type="submit" value="delete" class="delete-btn rounded-3 ms-2 my-1" data-id="{{ $value->id }}"><i class="fa-solid fa-trash-can"></i></button>                  
                           </td>
                         @endcan
