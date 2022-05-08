@@ -46,19 +46,6 @@ body {
 }
 
 /* Dashboard CSS */
-:root {
-    --main-color: #343957;
-    --second-color: #6b51df;
-    --text-color-dark: #434a6a;
-    --text-color-light: #f8f9fa;
-    --hover-color: #7a63dd;
-}
-
-html,
-body {
-    background-color: #f8f9fe;
-    height: 100%;
-}
 
 #layoutAuthentication {
     display: flex;
@@ -588,6 +575,32 @@ body {
     background-color: var(--hover-color);
     color: var(--text-color-light);
     border-color: var(--hover-color);
+}
+
+.stats-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.5rem;
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-icon.purple {
+    border: 2px solid #9694ff;
+}
+
+.stats-icon i {
+    color: var(--second-color);
+    font-size: 1.3rem;
+}
+
+@media (max-width: 767px) {
+    .stats-icon {
+        float: left;
+        margin-bottom: 0.4rem;
+    }
 }
 
 /* End Dashboard CSS */
