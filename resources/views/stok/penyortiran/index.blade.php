@@ -95,7 +95,7 @@
           })
       .then((willDelete) => {
         if (willDelete) {
-          $('#delete-penyortiran-form').submit();
+          this.parentElement.submit();
           swal("Data berhasil dihapus!", {
             icon: "success",
           });

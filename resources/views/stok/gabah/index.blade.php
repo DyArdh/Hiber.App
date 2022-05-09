@@ -91,7 +91,7 @@
           })
       .then((willDelete) => {
         if (willDelete) {
-          $('#delete-gabah-form').submit();
+          this.parentElement.submit();
           swal("Data berhasil dihapus!", {
             icon: "success",
           });
