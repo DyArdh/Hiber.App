@@ -77,8 +77,8 @@
           </a>
           <div class="collapse" id="collapsePenjualan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
-              <a class="nav-link" href="#">Penjualan</a>
-              <a class="nav-link" href="#">Rekap Penjualan</a>
+              <a class="nav-link" href="{{ route('penjualan.index') }}">Penjualan</a>
+              <a class="nav-link" href="{{ route('rekapPenjualan.index') }}">Rekap Penjualan</a>
             </nav>
           </div>
           @endcan

@@ -85,7 +85,7 @@
     </div>
 
     {{-- Row 2 --}}
-    <div class="row">
+    <div class="row mt-md-4 mt-lg-1">
         <div class="col-6 col-lg-3 col-md-6 pb-4">
             <div class="card">
                 <div class="card-body px-3 py-4-5">

@@ -1,23 +1,14 @@
 @extends('layouts.main-layout')
 
 @section('content')
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Penjualan</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Stok Produk</div>
 <div class="row">
-  <div class="col-md-12 d-flex justify-content-between">
+  <div class="col-md-12">
     @can('create', \App\Models\Penjualan::class)
       <a href="{{ route('penjualan.create') }}">
         <button type="button" class="btn btn-primary my-4" id="tambah-gabah">
           <i class="fa-solid fa-pencil"></i>
-          <span class="ps-2 fw-bolder"> Tambah Penjualan</span>
-        </button>
-      </a>
-    @endcan
-
-    @can('view', \App\Models\StokProduk::class)
-      <a href="{{ route('stokProduk.index') }}">
-        <button type="button" class="btn btn-primary my-4">
-          <i class="fa-solid fa-pencil"></i>
-          <span class="ps-2 fw-bolder"> Stok Produk</span>
+          <span class="ps-2 fw-bolder"> Tambah Produk</span>
         </button>
       </a>
     @endcan

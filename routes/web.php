@@ -1,20 +1,23 @@
 <?php
 
+use App\Models\HargaProduct;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccAdminController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\StokGabahController;
+use App\Http\Controllers\StokProdukController;
 use App\Http\Controllers\AccKaryawanController;
-use App\Http\Controllers\AccPerusahaanController;
 use App\Http\Controllers\HargaProductController;
+use App\Http\Controllers\AccPerusahaanController;
+use App\Http\Controllers\RekapPenjualanController;
 use App\Http\Controllers\StokProdukJadiController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenyortiranController;
 use App\Http\Controllers\StokPenggilinganController;
 use App\Http\Controllers\StokPenyortiran2Controller;
-use App\Models\HargaProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,4 +72,12 @@ Route::middleware(['auth'])->group(function () {
 
   Route::resource('/stock/produkJadi/harga', HargaProductController::class)->except(['show', 'destroy']);
   Route::get('/stock/produkJadi/harga/{id}/delete', [HargaProductController::class, 'destroy']);
+
+  Route::resource('/penjualan', PenjualanController::class)->except(['show', 'destroy']);
+
+  Route::resource('/penjualan/stokProduk', StokProdukController::class)->except(['show', 'destroy']);
+
+  Route::get('/rekapPenjualan', [RekapPenjualanController::class, 'index'])->name('rekapPenjualan.index');
+  Route::get('/rekapPenjualan/filter', [RekapPenjualanController::class, 'viewFilter'])->name('rekapPenjualan.filter');
+
 });

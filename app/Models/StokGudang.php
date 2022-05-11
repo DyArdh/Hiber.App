@@ -17,4 +17,9 @@ class StokGudang extends Model
     {
         return $this->belongsTo(HargaProduct::class, 'merk_id');
     }
+
+    public function penjualan()
+    {
+        return $this->hasMany(Penjualan::class);
+    }
 }

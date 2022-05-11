@@ -2,21 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\StokGudang;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class HargaProduct extends Model
+class StokProduk extends Model
 {
     use HasFactory;
 
     protected $guarded = ['id'];
-    protected $table = 'harga_products';
-
-    public function stokgudang()
-    {
-        return $this->hasMany(StokGudang::class);
-    }
+    protected $table = 'stok_produks';
 
     public function penjualan()
     {

@@ -38,6 +38,50 @@
             </form>
         </div>
     </div>
+    @if (session('success'))
+      <div class="modal fade success" id="modal-success" tabindex="-1" aria-labelledby="modal-successLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modal-successLabel">Informasi</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              {{ session('success') }}
+            </div>
+            <div class="modal-footer">
+              <button id="search" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    @endif
+  
+    <div class="table-responsive w-auto">
+      <table class="table table-bordered">
+        <thead>
+          <th scope="col">No. Transaksi</th>
+          <th scope="col">Tanggal</th>
+          <th scope="col">Merk</th>
+          <th scope="col">Varian</th>
+          <th scope="col">Berat (kg)</th>
+          <th scope="col">Harga</th>
+          <th scope="col">Total Harga</th>
+        </thead>
+        <tbody class="align-middle">
+          @foreach ($data as $row)
+          <tr>
+            <td>{{ $row->id }}</td>
+            <td>{{ $row->updated_at }}</td>
+            <td>{{ $row->stok_id }}</td>
+            <td>{{ $row->merk_id }}</td>
+            <td>{{ $row->harga }}</td>
+            <td>{{ $row->total_harga }}</td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 @endsection
@@ -57,6 +101,7 @@
                 format: 'yyyy-mm-dd'
             });
     });
+
 </script>
 
 @endsection
