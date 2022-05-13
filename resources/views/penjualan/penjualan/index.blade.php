@@ -12,15 +12,6 @@
         </button>
       </a>
     @endcan
-
-    @can('view', \App\Models\Penjualan::class)
-      <a href="{{ route('stokProduk.index') }}">
-        <button type="button" class="btn btn-primary my-4">
-          <i class="fa-solid fa-pencil"></i>
-          <span class="ps-2 fw-bolder"> Stok Produk</span>
-        </button>
-      </a>
-    @endcan
   </div>
 </div>
 <div class="row">

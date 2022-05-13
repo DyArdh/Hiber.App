@@ -15,6 +15,8 @@ class PenjualanController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', Penjualan::class);
+
         $data = Penjualan::all();
 
         return view('penjualan.penjualan.index', compact('data'));
@@ -27,6 +29,8 @@ class PenjualanController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Penjualan::class);
+
         $harProduct = HargaProduct::all();
         return view('penjualan.penjualan.create', compact('harProduct'));
     }
@@ -39,6 +43,8 @@ class PenjualanController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Penjualan::class);
+
         foreach ($request->merk_id as $key => $merk_id) {
             $data = new penjualan();
             $data->merk_id = $merk_id;

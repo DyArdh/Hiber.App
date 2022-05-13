@@ -33,28 +33,4 @@ class PenjualanPolicy
     {
         return $user->role == 'Admin';
     }
-
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\penjualan  $penjualan
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function update(User $user, penjualan $penjualan)
-    {
-        return $user->role == 'Admin';
-    }
-
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\penjualan  $penjualan
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function delete(User $user, penjualan $penjualan)
-    {
-        return $user->role == 'Admin';
-    }
 }
