@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\penjualan;
-use App\Http\Requests\StorepenjualanRequest;
-use App\Http\Requests\UpdatepenjualanRequest;
+use Illuminate\Http\Request;
+use App\Models\HargaProduct;
 
 class PenjualanController extends Controller
 {
@@ -27,51 +27,27 @@ class PenjualanController extends Controller
      */
     public function create()
     {
-        return view('penjualan.penjualan.create');
+        $harProduct = HargaProduct::all();
+        return view('penjualan.penjualan.create', compact('harProduct'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorepenjualanRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorepenjualanRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\penjualan  $penjualan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(penjualan $penjualan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatepenjualanRequest  $request
-     * @param  \App\Models\penjualan  $penjualan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatepenjualanRequest $request, penjualan $penjualan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\penjualan  $penjualan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(penjualan $penjualan)
-    {
-        //
+        foreach ($request->merk_id as $key => $merk_id) {
+            $data = new penjualan();
+            $data->merk_id = $merk_id;
+            $data->varian = $request->varian[$key];
+            $data->jumlah = $request->jumlah[$key];
+            $data->harga = $request->harga[$key];
+            $data->total_harga = $request->total_harga[$key];
+            $data->save();
+        };
+        return redirect()->route('penjualan.index')->with('success', 'Data berhasil ditambahkan');
     }
 }

@@ -13,7 +13,7 @@
       </a>
     @endcan
 
-    @can('view', \App\Models\StokProduk::class)
+    @can('view', \App\Models\Penjualan::class)
       <a href="{{ route('stokProduk.index') }}">
         <button type="button" class="btn btn-primary my-4">
           <i class="fa-solid fa-pencil"></i>
@@ -51,7 +51,7 @@
           <th scope="col">No. Transaksi</th>
           <th scope="col">Tanggal</th>
           <th scope="col">Merk</th>
-          <th scope="col">Berat (kg)</th>
+          <th scope="col">Varian (kg)</th>
           <th scope="col">Harga</th>
           <th scope="col">Total Harga</th>
         </thead>
@@ -61,8 +61,8 @@
             <td>{{ $row->id }}</td>
             <td>{{ $row->updated_at }}</td>
             <td>{{ $row->hargaProduct->merk }}</td>
-            <td>{{ $row->berat }}</td>
-            <td>{{ $row->stokGudang->harga }}</td>
+            <td>{{ $row->varian }}</td>
+            <td>{{ $row->harga }}</td>
             <td>{{ $row->total_harga }}</td>
           </tr>
           @endforeach

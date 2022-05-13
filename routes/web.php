@@ -73,9 +73,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('/stock/produkJadi/harga', HargaProductController::class)->except(['show', 'destroy']);
   Route::get('/stock/produkJadi/harga/{id}/delete', [HargaProductController::class, 'destroy']);
 
-  Route::resource('/penjualan', PenjualanController::class)->except(['show', 'destroy']);
-
-  Route::resource('/penjualan/stokProduk', StokProdukController::class)->except(['show', 'destroy']);
+  Route::resource('/penjualan', PenjualanController::class)->except(['show', 'edit', 'update', 'destroy']);
 
   Route::get('/rekapPenjualan', [RekapPenjualanController::class, 'index'])->name('rekapPenjualan.index');
   Route::get('/rekapPenjualan/filter', [RekapPenjualanController::class, 'viewFilter'])->name('rekapPenjualan.filter');
