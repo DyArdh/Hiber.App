@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('merk_id');
-            $table->foreignId('varian_id');
+            $table->integer('varian');
             $table->integer('jumlah');
             $table->bigInteger('harga');
             $table->bigInteger('total_harga');
