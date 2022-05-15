@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\penjualan;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Validated;
@@ -27,17 +28,13 @@ class RekapPenjualanController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function viewFilter(Request $request)
-     {  
-
+    public function viewFilter(Request $request)
+    {
         $startDate = Carbon::parse(request()->startDate)->toDateTimeString();
         $endDate = Carbon::parse(request()->endDate)->addSeconds(86399)->toDateTimeString();
-        
-        // $data = Penjualan::all();
-        $data = Penjualan::whereBetween('updated_at', [$startDate, $endDate])->get();
-        // dd($data);
 
+        $data = Penjualan::whereBetween('updated_at', [$startDate, $endDate])->get();
 
         return view('penjualan.rekap.viewFilter', compact('data'));
-     }
+    }
 }

@@ -26,7 +26,11 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              {{ session('success') }}
+              @foreach (session('success') as $message)
+                <div class="alert alert-info">
+                  {{ $message }}
+                </div>
+              @endforeach
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

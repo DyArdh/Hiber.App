@@ -73,8 +73,9 @@
           <tr>
             <td>{{ $row->id }}</td>
             <td>{{ $row->updated_at }}</td>
-            <td>{{ $row->stok_id }}</td>
-            <td>{{ $row->merk_id }}</td>
+            <td>{{ $row->hargaProduct->merk }}</td>
+            <td>{{ $row->varian }}</td>
+            <td>{{ $row->jumlah }}</td>
             <td>{{ $row->harga }}</td>
             <td>{{ $row->total_harga }}</td>
           </tr>

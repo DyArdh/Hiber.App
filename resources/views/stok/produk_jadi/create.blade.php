@@ -22,7 +22,7 @@
             <div class="form-group row mb-4 px-3">
                 <label for="jenis" class="form-label col-md-3">Jenis</label>
                 <div class="col-md-9">
-                    <select class="form-select" aria-label="select-role" @error('jenis') is-invalid @enderror id="jenis" name="jenis" required/>
+                    <select class="form-select @error('merk_id') is-invalid @enderror" id="jenis" name="jenis" required>
                         <option value="Polos">Polos</option>
                         <option value="Medium">Medium</option>
                         <option value="Super">Super</option>
@@ -38,10 +38,11 @@
             <div class="form-group row mb-4 px-3">
                 <label for="merk_id" class="form-label col-md-3">Merk</label>
                 <div class="col-md-9">
-                    <select class="form-select" aria-label="select-role" @error('merk_id') is-invalid @enderror id="merk_id" name="merk_id" required/>
+                    <select class="form-select @error('merk_id') is-invalid @enderror" id="merk_id" name="merk_id" required>
+                        <option data-price="0" value="">---</option>
                         @foreach ($data as $row)
                             <option data-price="{{ $row->harga }}" value="{{ $row->id }}">{{ $row->merk }}</option>
-                        @endforeach
+                        @endforeach    
                     </select>
                     
                     @error('merk_id')
