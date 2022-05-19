@@ -8,14 +8,15 @@ use App\Http\Controllers\AccAdminController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\StokGabahController;
-use App\Http\Controllers\StokProdukController;
 use App\Http\Controllers\AccKaryawanController;
+use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\HargaProductController;
 use App\Http\Controllers\AccPerusahaanController;
 use App\Http\Controllers\RekapPenjualanController;
 use App\Http\Controllers\StokProdukJadiController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenyortiranController;
+use App\Http\Controllers\JenisPengeluaranController;
 use App\Http\Controllers\StokPenggilinganController;
 use App\Http\Controllers\StokPenyortiran2Controller;
 
@@ -78,4 +79,8 @@ Route::middleware(['auth'])->group(function () {
 
   Route::get('/rekapPenjualan', [RekapPenjualanController::class, 'index'])->name('rekapPenjualan.index');
   Route::get('/rekapPenjualan/filter', [RekapPenjualanController::class, 'viewFilter'])->name('rekapPenjualan.filter');
+
+  Route::resource('/keuangan/pengeluaran', PengeluaranController::class);
+  Route::resource('/keuangan/pengeluaran/jenis', JenisPengeluaranController::class);
+  
 });
