@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-6">
                     @can('create', \App\Models\Pengeluaran::class)
-                        <a href="{{ route('pengeluaran.create') }}">
+                        <a href="{{ route('keuangan.pengeluaran.create') }}">
                             <button type="button" class="btn btn-primary mt-4" id="tambah-acc" data-bs-toggle="modal" data-bs-target="#popupTambahAcc">
                                 <i class="fa-solid fa-pencil"></i>
                                 <span class="ps-2 fw-bolder"> Tambah Data Pengeluaran</span>
@@ -73,7 +73,7 @@
                   <td> {{ $row->keterangan }} </td>
                   @can('update', \App\Models\Pengeluaran::class)
                     <td class="d-flex">
-                      <a href="{{ route('pengeluaran.edit', $row->id) }}">
+                      <a href="{{ route('keuangan.pengeluaran.edit', $row->id) }}">
                         <button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button>
                       </a>
                     </td>

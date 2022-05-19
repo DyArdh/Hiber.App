@@ -80,7 +80,17 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/rekapPenjualan', [RekapPenjualanController::class, 'index'])->name('rekapPenjualan.index');
   Route::get('/rekapPenjualan/filter', [RekapPenjualanController::class, 'viewFilter'])->name('rekapPenjualan.filter');
 
-  Route::resource('/keuangan/pengeluaran', PengeluaranController::class);
   Route::resource('/keuangan/pengeluaran/jenis', JenisPengeluaranController::class);
-  
+
+  Route::resource('/keuangan/pengeluaran', PengeluaranController::class, [
+    'names' => [
+      'index' => 'keuangan.pengeluaran.index',
+      'create' => 'keuangan.pengeluaran.create',
+      'store' => 'keuangan.pengeluaran.store',
+      'show' => 'keuangan.pengeluaran.show',
+      'edit' => 'keuangan.pengeluaran.edit',
+      'update' => 'keuangan.pengeluaran.update',
+      'destroy' => 'keuangan.pengeluaran.destroy'
+    ]
+  ]);
 });
