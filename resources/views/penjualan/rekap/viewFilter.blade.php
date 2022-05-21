@@ -23,7 +23,7 @@
                     <span class="mx-3">-</span>
                     <div class="form-group">
                         <div class="input-group date" id="endDate">
-                            <input type="text" class="form-control" name="endDate" {{ $end }}>
+                            <input type="text" class="form-control" name="endDate" value="{{ $end }}">
                             <span class="input-group-append">
                                 <span class="input-group-text bg-white d-block">
                                     <i class="fa fa-calendar"></i>
