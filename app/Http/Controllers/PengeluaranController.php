@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JenisPengeluaran;
 use App\Models\Pengeluaran;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,11 @@ class PengeluaranController extends Controller
      */
     public function create()
     {
-        //
+        $this->authorize('create', Pengeluaran::class);
+
+        $data = JenisPengeluaran::all();
+
+        return view('keuangan.pengeluaran.create', compact('data'));
     }
 
     /**
@@ -39,18 +44,17 @@ class PengeluaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->authorize('create', Pengeluaran::class);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $validations = $request->validate([
+            'jenis_id' => 'required',
+            'keterangan' => 'required|max:255',
+            'harga' => 'required|numeric',
+        ]);
+
+        Pengeluaran::create($validations);
+
+        return redirect()->route('keuangan.pengeluaran.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -61,7 +65,12 @@ class PengeluaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->authorize('update', Pengeluaran::class);
+
+        $data = Pengeluaran::findOrFail($id);
+        $jenis = JenisPengeluaran::all();
+
+        return view('keuangan.pengeluaran.edit', compact('data', 'jenis'));
     }
 
     /**
@@ -73,17 +82,17 @@ class PengeluaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-    }
+        $this->authorize('create', Pengeluaran::class);
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $validations = $request->validate([
+            'jenis_id' => 'required|numeric',
+            'keterangan' => 'required|max:255',
+            'harga' => 'required|numeric',
+        ]);
+
+        $data = Pengeluaran::findOrFail($id);
+        $data->update($validations);
+
+        return redirect()->route('keuangan.pengeluaran.index')->with('success', 'Data berhasil diubah');
     }
 }

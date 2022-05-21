@@ -40,7 +40,7 @@ class JenisPengeluaranPolicy
      * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, JenisPengeluaran $jenisPengeluaran)
+    public function update(User $user)
     {
         return $user->role == 'Admin';
     }
@@ -52,7 +52,7 @@ class JenisPengeluaranPolicy
      * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, JenisPengeluaran $jenisPengeluaran)
+    public function delete(User $user)
     {
         return $user->role == 'Admin';
     }

@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\JenisPengeluaran;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pengeluaran extends Model
 {
@@ -14,6 +15,6 @@ class Pengeluaran extends Model
 
     public function jenisPengeluaran()
     {
-        return $this->belongsTo(Pengeluaran::class, 'jenis_id');
+        return $this->belongsTo(JenisPengeluaran::class, 'jenis_id');
     }
 }

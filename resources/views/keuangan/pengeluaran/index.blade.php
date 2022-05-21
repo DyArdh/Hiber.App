@@ -28,7 +28,7 @@
                 </div>
             </div>
             
-        <h4 class="pt-4 pb-3">Daftar Stok Penyortiran 2</h4>
+        <h4 class="pt-4 pb-3">Daftar Pengeluaran</h4>
         @if (session('success'))
           <div class="modal fade success" id="modal-success" tabindex="-1" aria-labelledby="modal-successLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -54,13 +54,13 @@
                $number = 1 
             @endphp
             <thead>
-              <th scope="col">No.</th>
-              <th scope="col">Tanggal</th>
-              <th scope="col">Jenis Pengeluaran</th>
-              <th scope="col">Harga</th>
+              <th style="width: 10%" scope="col">No.</th>
+              <th style="width: 20%" scope="col">Tanggal</th>
+              <th style="width: 15%" scope="col">Jenis Pengeluaran</th>
+              <th style="width: 15%" scope="col">Harga</th>
               <th scope="col">Keterangan</th>
               @can('update', \App\Models\Pengeluaran::class)
-                <th scope="col">Action</th>
+                <th style="width: 15%" scope="col">Action</th>
               @endcan
             </thead>
             <tbody class="align-middle">
@@ -68,7 +68,7 @@
               <tr>
                   <td>{{ $row->id }}</td>
                   <td> {{ $row->created_at }} </td>
-                  <td> {{ $row->jenis_pengeluaran }} </td>
+                  <td> {{ $row->jenisPengeluaran->jenis }} </td>
                   <td> {{ $row->harga }} </td>
                   <td> {{ $row->keterangan }} </td>
                   @can('update', \App\Models\Pengeluaran::class)

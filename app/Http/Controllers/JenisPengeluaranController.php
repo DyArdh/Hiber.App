@@ -14,11 +14,11 @@ class JenisPengeluaranController extends Controller
      */
     public function index()
     {
-        // $this->authorize('view', JenisPengeluaran::class);
+        $this->authorize('view', JenisPengeluaran::class);
 
         $data = JenisPengeluaran::all();
 
-        return view('keuangan.pengeluaran.jenisPengeluaran.create');
+        return view('keuangan.pengeluaran.jenisPengeluaran.index', compact('data'));
     }
 
     /**
@@ -41,51 +41,65 @@ class JenisPengeluaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->authorize('create', JenisPengeluaran::class);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
-     * @return \Illuminate\Http\Response
-     */
-    public function show(JenisPengeluaran $jenisPengeluaran)
-    {
-        //
+        $validations = $request->validate([
+            'jenis' => 'required|max:255',
+        ]);
+
+        JenisPengeluaran::create($validations);
+
+        return redirect()->route('jenis.index')->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(JenisPengeluaran $jenisPengeluaran)
+    public function edit($id)
     {
-        //
+        $this->authorize('update', JenisPengeluaran::class);
+
+        $data = JenisPengeluaran::findOrFail($id);
+        return view('keuangan.pengeluaran.jenisPengeluaran.edit', compact('data'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, JenisPengeluaran $jenisPengeluaran)
+    public function update(Request $request, $id)
     {
-        //
+        $this->authorize('update', JenisPengeluaran::class);
+
+        $validations = $request->validate([
+            'jenis' => 'required|max:255',
+        ]);
+
+        $data = JenisPengeluaran::findOrFail($id);
+        $data->update($validations);
+
+        return redirect()->route('jenis.index')->with('success', 'Data berhasil diubah');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\JenisPengeluaran  $jenisPengeluaran
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(JenisPengeluaran $jenisPengeluaran)
+    public function destroy($id)
     {
-        //
+        $this->authorize('delete', JenisPengeluaran::class);
+
+        $data = JenisPengeluaran::findOrFail($id);
+        $data->delete();
+
+        return redirect()->route('jenis.index');
     }
 }
