@@ -93,7 +93,7 @@
           <div class="collapse" id="collapseKeuangan" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
             <nav class="sb-sidenav-menu-nested nav">
               <a class="nav-link" href="{{ route('keuangan.pengeluaran.index') }}">Pengeluaran</a>
-              <a class="nav-link" href="{{ route('rekapPenjualan.index') }}">Laporan Keuangan</a>
+              <a class="nav-link" href="{{ route('laporanKeuangan.index') }}">Laporan Keuangan</a>
               <a class="nav-link" href="{{ route('rekapPenjualan.index') }}">Peramalan Penjualan</a>
             </nav>
           </div>

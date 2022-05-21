@@ -596,6 +596,17 @@ body {
     font-size: 1.3rem;
 }
 
+#tableKeuangan {
+    border-width: 0.1rem;
+    border-color: var(--main-color);
+}
+
+#tableKeuangan .card-body .card-title {
+    background-color: var(--second-color);
+    border-radius: 0.3rem;
+    color: var(--text-color-light);
+}
+
 @media (max-width: 767px) {
     .stats-icon {
         float: left;

@@ -30,11 +30,13 @@ class RekapPenjualanController extends Controller
 
     public function viewFilter(Request $request)
     {
+        $start = Carbon::parse(request()->startDate)->toDateString();
+        $end = Carbon::parse(request()->endDate)->toDateString();
         $startDate = Carbon::parse(request()->startDate)->toDateTimeString();
         $endDate = Carbon::parse(request()->endDate)->addSeconds(86399)->toDateTimeString();
 
         $data = Penjualan::whereBetween('updated_at', [$startDate, $endDate])->get();
 
-        return view('penjualan.rekap.viewFilter', compact('data'));
+        return view('penjualan.rekap.viewFilter', compact('data', 'start', 'end'));
     }
 }

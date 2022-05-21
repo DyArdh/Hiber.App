@@ -17,6 +17,7 @@ use App\Http\Controllers\StokProdukJadiController;
 use App\Http\Controllers\StokPengeringanController;
 use App\Http\Controllers\StokPenyortiranController;
 use App\Http\Controllers\JenisPengeluaranController;
+use App\Http\Controllers\LaporanKeuanganController;
 use App\Http\Controllers\StokPenggilinganController;
 use App\Http\Controllers\StokPenyortiran2Controller;
 
@@ -93,4 +94,7 @@ Route::middleware(['auth'])->group(function () {
       'destroy' => 'keuangan.pengeluaran.destroy'
     ]
   ]);
+
+  Route::get('/keuangan/laporanKeuangan', [LaporanKeuanganController::class, 'index'])->name('laporanKeuangan.index');
+  Route::get('/keuangan/laporanKeuangan/filter', [LaporanKeuanganController::class, 'viewFilter'])->name('laporanKeuangan.filter');
 });
