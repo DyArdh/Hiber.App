@@ -2,28 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\HargaProduct;
 use Illuminate\Http\Request;
+use App\Models\Penjualan;
 
 class ForcastingController extends Controller
 {
-    /**
-     * Display the specified resource.
+     /**
+     * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function exponentialSmoothing($periode, $dataset)
+    public function index() {
+
+        $merk = HargaProduct::all();
+        return view('peramalan.index', compact('merk'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exponentialSmoothing(Request $request)
     {
-        // Adaptive Response Rate Single Exponential Smoothing
-        // F[periode ke-t] = (alpha[t] * X[t]) + ((1 - alpha[t]) * F[t])
-        $X = $dataset; // dataset
-        $F = []; // peramalan
-        $e = []; // error/kesalahan
-        $E = []; // error dihaluskan
-        $AE = []; //error absolut
-        $alpha = []; // konstanta smoothing
-        $beta = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]; // range alpha
-        $PE = []; // persentase error
-        $MAPE = []; // rata rata kesalahan
+        // mendapatkan data penjualan dari database berdasarkan request
+        $data = Penjualan::getDataPenjualan($request);
+
+        $periode = Penjualan::getPeriode($request);
+        $X = Penjualan::getTotal($periode, $data);
+        $F = array();
+        $e = array();
+        $E = array();
+        $AE = array();
+        $alpha = array();
+        $beta = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9];
+        $PE = array();
+        $MAPE = array();
 
         // perhitungan peramalan menggunakan nilai beta mulai dari 0.1 sampai 0.9
         for($i = 0; $i < count($beta); $i++) {
@@ -55,23 +71,55 @@ class ForcastingController extends Controller
             // menghitung rata-rata kesalahan peramalan
             $MAPE[$i] = array_sum($PE[$i])/(count($periode) - 1);
         }
-        
+
         // mendapatkan index beta dengan nilai mape terkecil
         $bestBetaIndex = array_search(min($MAPE), $MAPE);
 
         // menyatukan semua hasil perhitungan dan menginputkan hasil peramalan periode berikutnya
-        $result = [];
+        $hasil = array();
         for ($i = 0; $i <= count($periode); $i++) {
-            $result[$i] = round($F[$bestBetaIndex][$i]);
+            if ($i < count($periode)) {
+                $hasil[$i] = [
+                    'periode'                   => $periode[$i],
+                    'aktual'                    => $X[$i],
+                    'peramalan'                 => $F[$bestBetaIndex][$i],
+                    'galat'                     => $e[$bestBetaIndex][$i],
+                    'galat_pemulusan'           => $E[$bestBetaIndex][$i],
+                    'galat_pemulusan_absolut'   => $AE[$bestBetaIndex][$i],
+                    'alpha'                     => $alpha[$bestBetaIndex][$i],
+                    'percentage_error'          => $PE[$bestBetaIndex][$i]
+                ];
+            } else {
+                $nextPeriode = date('Y-m', strtotime("+1 month", strtotime(date($request->to))));
+                $hasil[$i] = [
+                    'periode'                   => $nextPeriode,
+                    'aktual'                    => 0,
+                    'peramalan'                 => $F[$bestBetaIndex][$i],
+                    'galat'                     => 0,
+                    'galat_pemulusan'           => 0,
+                    'galat_pemulusan_absolut'   => 0,
+                    'alpha'                     => $alpha[$bestBetaIndex][$i],
+                    'percentage_error'          => 0
+                ];
+            }
         }
-        
-        // masukkan hasil, beta, dan mape tebaik ke array
-        $final = [
-            'result' => $result,
-            'last' => end($result),
-            'mape' => $MAPE[$bestBetaIndex],
-        ];
-        
-        return $final;
+
+        $request->produk_id == null ? $produk = '' : $produk = HargaProduct::where('id', $request->produk_id)->first();
+
+        $peramalan = ['hasil' => $hasil, 'beta' => $beta[$bestBetaIndex], 'mape' => $MAPE[$bestBetaIndex], 'produk' => $produk];
+
+        return response()->json($peramalan);
     }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+     public function result()
+     {
+         return view('peramalan.result');
+     }
 }

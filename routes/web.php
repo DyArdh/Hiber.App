@@ -12,6 +12,7 @@ use App\Http\Controllers\AccKaryawanController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\HargaProductController;
 use App\Http\Controllers\AccPerusahaanController;
+use App\Http\Controllers\ForcastingController;
 use App\Http\Controllers\RekapPenjualanController;
 use App\Http\Controllers\StokProdukJadiController;
 use App\Http\Controllers\StokPengeringanController;
@@ -97,4 +98,7 @@ Route::middleware(['auth'])->group(function () {
 
   Route::get('/keuangan/laporanKeuangan', [LaporanKeuanganController::class, 'index'])->name('laporanKeuangan.index');
   Route::get('/keuangan/laporanKeuangan/filter', [LaporanKeuanganController::class, 'viewFilter'])->name('laporanKeuangan.filter');
+
+  Route::get('/keuangan/peramalan', [ForcastingController::class, 'index'])->name('peramalan.index');
+  Route::get('/keuangan/peramalan/result', [ForcastingController::class, 'result'])->name('peramalan.result');
 });

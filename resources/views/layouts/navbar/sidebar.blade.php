@@ -94,7 +94,7 @@
             <nav class="sb-sidenav-menu-nested nav">
               <a class="nav-link" href="{{ route('keuangan.pengeluaran.index') }}">Pengeluaran</a>
               <a class="nav-link" href="{{ route('laporanKeuangan.index') }}">Laporan Keuangan</a>
-              <a class="nav-link" href="{{ route('rekapPenjualan.index') }}">Peramalan Penjualan</a>
+              <a class="nav-link" href="{{ route('peramalan.index') }}">Peramalan Penjualan</a>
             </nav>
           </div>
           @endcan
