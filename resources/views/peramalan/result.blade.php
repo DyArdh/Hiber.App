@@ -1,5 +1,6 @@
 @extends('layouts.main-layout')
 
+@section('title', 'Peramalan Penjualan')
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3">
     <div class="row my-2">

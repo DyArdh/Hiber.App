@@ -1,5 +1,6 @@
 @extends('layouts.main-layout')
 
+@section('title', 'Tambah Stok Gudang')
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
     Tambah Data Stok Gudang
