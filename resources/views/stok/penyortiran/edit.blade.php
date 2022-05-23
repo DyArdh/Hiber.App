@@ -1,5 +1,6 @@
 @extends('layouts.main-layout')
 
+@section('title', 'Edit Stok Penyortiran 1')
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
     Ubah Data Stok Penyortiran 1

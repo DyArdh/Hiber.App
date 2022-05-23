@@ -1,8 +1,9 @@
 @extends('layouts.main-layout')
 
+@section('title', 'Tambah Akun Admin')
 @section('content')
 <div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">
-    Tambah Account Admin
+    Tambah Akun Admin
 </div>
 <div class="row mt-4 mx-3 d-flex justify-content-center">
     <div class="add-admin col-12 bg-white">
