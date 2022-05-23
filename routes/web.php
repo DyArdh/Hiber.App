@@ -100,5 +100,5 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/keuangan/laporanKeuangan/filter', [LaporanKeuanganController::class, 'viewFilter'])->name('laporanKeuangan.filter');
 
   Route::get('/keuangan/peramalan', [ForcastingController::class, 'index'])->name('peramalan.index');
-  Route::get('/keuangan/peramalan/result', [ForcastingController::class, 'result'])->name('peramalan.result');
+  Route::post('/keuangan/peramalan/result', [ForcastingController::class, 'result'])->name('peramalan.result');
 });

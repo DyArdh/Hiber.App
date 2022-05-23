@@ -53,7 +53,7 @@
                         <td> {{ $value->jenis }} </td>
                         @can('update', \App\Models\JenisPengeluaran::class)
                           <td class="d-flex">
-                            <a href="{{ route('harga.edit', $value->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
+                            <a href="{{ route('jenis.edit', $value->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
                             <form id="delete-jenisPengeluaran-form" action="{{ route('jenis.destroy', $value->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')

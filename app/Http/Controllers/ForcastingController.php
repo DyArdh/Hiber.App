@@ -8,13 +8,13 @@ use App\Models\Penjualan;
 
 class ForcastingController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
-
+    public function index()
+    {
         $merk = HargaProduct::all();
         return view('peramalan.index', compact('merk'));
     }
@@ -25,13 +25,40 @@ class ForcastingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function exponentialSmoothing(Request $request)
+
+    public function result(Request $request)
+    {
+        $peramalan = $this->exponentialSmoothing($request);
+
+        if ($peramalan['status'] == 'failed') {
+            return redirect()->back()->with('error', $peramalan['message']);
+        }
+
+        return view('peramalan.result', compact('peramalan'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function exponentialSmoothing($request)
     {
         // mendapatkan data penjualan dari database berdasarkan request
         $data = Penjualan::getDataPenjualan($request);
 
         $periode = Penjualan::getPeriode($request);
         $X = Penjualan::getTotal($periode, $data);
+
+        if (count($X) < 3) {
+            $peramalan = [
+                'status' => 'failed',
+                'message' => 'Data tidak cukup untuk melakukan peramalan'
+            ];
+            return $peramalan;
+        }
+
         $F = array();
         $e = array();
         $E = array();
@@ -42,18 +69,18 @@ class ForcastingController extends Controller
         $MAPE = array();
 
         // perhitungan peramalan menggunakan nilai beta mulai dari 0.1 sampai 0.9
-        for($i = 0; $i < count($beta); $i++) {
+        for ($i = 0; $i < count($beta); $i++) {
             // inisialisasi
             $F[$i][0] = $e[$i][0] = $E[$i][0] = $AE[$i][0] = $alpha[$i][0] = $PE[$i][0] = 0;
             $F[$i][1] = $X[0];
             $alpha[$i][1] = $beta[$i];
 
-            for($j = 1; $j < count($periode); $j++){
+            for ($j = 1; $j < count($periode); $j++) {
                 // perhitungan peramalan untuk periode berikutnya
                 $F[$i][$j + 1] = ($alpha[$i][$j] * $X[$j]) + ((1 - $alpha[$i][$j]) * $F[$i][$j]);
 
                 // menghitung selisih antara nilai aktual dengan hasil peramalan
-                $e[$i][$j] = $X[$j] - $F[$i][$j]; 
+                $e[$i][$j] = $X[$j] - $F[$i][$j];
 
                 // menghitung nilai kesalahan peramalan yang dihaluskan
                 $E[$i][$j] = ($beta[$i] * $e[$i][$j]) + ((1 - $beta[$i]) * $E[$i][$j - 1]);
@@ -69,7 +96,7 @@ class ForcastingController extends Controller
             }
 
             // menghitung rata-rata kesalahan peramalan
-            $MAPE[$i] = array_sum($PE[$i])/(count($periode) - 1);
+            $MAPE[$i] = array_sum($PE[$i]) / (count($periode) - 1);
         }
 
         // mendapatkan index beta dengan nilai mape terkecil
@@ -106,20 +133,8 @@ class ForcastingController extends Controller
 
         $request->produk_id == null ? $produk = '' : $produk = HargaProduct::where('id', $request->produk_id)->first();
 
-        $peramalan = ['hasil' => $hasil, 'beta' => $beta[$bestBetaIndex], 'mape' => $MAPE[$bestBetaIndex], 'produk' => $produk];
+        $peramalan = ['hasil' => $hasil, 'beta' => $beta[$bestBetaIndex], 'mape' => $MAPE[$bestBetaIndex], 'produk' => $produk, 'status' => 'success'];
 
-        return response()->json($peramalan);
+        return $peramalan;
     }
-
-     /**
-     * Display the specified resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-     public function result()
-     {
-         return view('peramalan.result');
-     }
 }
