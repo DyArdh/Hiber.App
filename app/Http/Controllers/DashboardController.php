@@ -27,7 +27,21 @@ class DashboardController extends Controller
         $produk = StokGudang::where('status', 'Produk Jadi')->count();
 
         $total = DB::table('harga_products')->count();
+
+        $gudangs = StokGudang::where('status', 'gabah')->sum('berat');
+        $pengeringans = StokGudang::where('status', 'pengeringan')->sum('berat');
+        $penggilingans = StokGudang::where('status', 'penggilingan')->sum('berat');
+        $sortirs1 = StokGudang::where('status', 'penyortiran')
+                ->where(function ($query) {
+                    $query->where('jenis', 'Polos')
+                    ->orWhere('jenis', 'Medium');
+                })->sum('berat');
+        $sortirs2 = StokGudang::where('status', 'penyortiran')
+                ->where(function ($query) {
+                    $query->where('jenis', 'Super');
+                })->sum('berat');
+        $produks = StokGudang::where('status', 'Produk Jadi')->sum('berat');
         
-        return view('dashboard.index',compact('user', 'gudang', 'pengeringan', 'penggilingan', 'sortir1', 'sortir2', 'produk', 'total'));
+        return view('dashboard.index',compact('user', 'gudang', 'pengeringan', 'penggilingan', 'sortir1', 'sortir2', 'produk', 'total', 'gudangs', 'pengeringans', 'penggilingans', 'sortirs1', 'sortirs2', 'produks'));
     }
 }

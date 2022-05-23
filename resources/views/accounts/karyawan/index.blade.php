@@ -37,7 +37,7 @@
         @endif
 
         <div class="table-responsive w-auto">
-          <table class="table table-bordered" id="tableAdmin">
+          <table class="table table-bordered" id="allTable">
             <thead>
               <th scope="col">Id</th>
               <th scope="col">Nama Lengkap</th>

@@ -86,7 +86,7 @@
     </div>
 
     {{-- Row 2 --}}
-    <div class="row mt-md-4 mt-lg-1">
+    <div class="row mt-4 mt-md-4 mt-lg-1">
         <div class="col-6 col-lg-3 col-md-6 pb-4">
             <div class="card">
                 <div class="card-body px-3 py-4-5">
@@ -168,4 +168,101 @@
         </div>
     </div>
     {{-- End row 2 --}}
+
+    {{-- Row 3 --}}
+
+    <div class="row mt-4 mt-md-4 mt-lg-1">
+        <div class="col-md-9" id="table-process"></div>
+        <div class="col-md-3 mt-4 mt-lg-0" id="calendar"></div>
+    </div>
+
+    {{-- End Row 3 --}}
+@endsection
+
+@section('scripts')
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script>
+    Highcharts.chart('table-process', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        align: 'left',
+        text: 'Total Berat Produk'
+    },
+    accessibility: {
+        announceNewData: {
+        enabled: true
+        }
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+        text: 'Total berat'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+        borderWidth: 0,
+        dataLabels: {
+            enabled: true,
+        }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y} kg</b> of total<br/>'
+    },
+
+    series: [
+        {
+        name: "Stok",
+        colorByPoint: true,
+        data: [
+            {
+            name: "Gudang",
+            y: {{ $gudangs }},
+            },
+            {
+            name: "Pengeringan",
+            y: {{ $pengeringans }},
+            },
+            {
+            name: "Penggilingan",
+            y: {{ $penggilingans }},
+            },
+            {
+            name: "Penyortiran 1",
+            y: {{ $sortirs1 }},
+            },
+            {
+            name: "Penyortiran 2",
+            y: {{ $sortirs2 }},
+            },
+            {
+            name: "Produk Jadi",
+            y: {{ $produks }},
+            },
+        ]
+        }
+    ]
+    });
+</script>
+
+<script>
+    $('#calendar').datepicker({
+        inline: true,
+        firstDay: 1,
+        showOtherMonths: true,
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    });
+</script>
+    
 @endsection
