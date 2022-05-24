@@ -62,8 +62,8 @@
     </div>
 </div>
 
-<div class="row mb-5">
-    <div class="col-md-6 mt-3">
+<div class="row mb-5 mt-3" id="keakuratan">
+    <div class="col-md-6 my-3">
         <h5 class="text-center mb-3">Persentase Keakuratan Peramalan</h5>
         <div class="progress mx-auto" data-value='{{ 100 - number_format($peramalan['mape'], 0) }}'>
             <span class="progress-left">
@@ -78,7 +78,7 @@
         </div>
     </div>
 
-    <div class="col-md-6 mt-3">
+    <div class="col-md-6 my-3">
         <h5 class="text-center mb-3">Persentase Kesalahan Peramalan</h5>
         <div class="progress mx-auto" data-value='{{ number_format($peramalan['mape'], 0) }}'>
             <span class="progress-left">

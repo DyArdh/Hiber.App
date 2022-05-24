@@ -649,6 +649,12 @@ body {
     left: 0;
 }
 
+#keakuratan {
+    background-color: #fff;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
 #calendar .ui-datepicker,
 #calendar .ui-datepicker table,
 #calendar .ui-datepicker tr,
