@@ -12,24 +12,14 @@
                   @csrf
                   <div class="col-12 col-md-6 d-flex mb-4">
                       <div class="form-group">
-                          <div class="input-group date" id="startDate">
-                              <input type="text" class="form-control" name="startDate" value="{{ $start }}">
-                              <span class="input-group-append">
-                                  <span class="input-group-text bg-white d-block">
-                                      <i class="fa fa-calendar"></i>
-                                  </span>
-                              </span>
+                          <div class="input-group">
+                              <input type="month" class="form-control" name="from" value="{{ $start }}">
                           </div>
                       </div>
                       <span class="mx-3">-</span>
                       <div class="form-group">
-                          <div class="input-group date" id="endDate">
-                              <input type="text" class="form-control" name="endDate" value="{{ $end }}">
-                              <span class="input-group-append">
-                                  <span class="input-group-text bg-white d-block">
-                                      <i class="fa fa-calendar"></i>
-                                  </span>
-                              </span>
+                          <div class="input-group">
+                              <input type="month" class="form-control" name="to" value="{{ $end }}">
                           </div>
                       </div>
                       <button class="btn simpan-btn btn-primary ms-3">
@@ -44,7 +34,7 @@
             <div class="col-12 mb-4">
                 <div class="card" id="tableKeuangan">
                     <div class="card-body">
-                        <h5 class="card-title text-center py-2">{{ $start }} s/d {{ $end }}</h5>
+                        <h5 class="card-title text-center py-2">{{ $from }} s/d {{ $to }}</h5>
                         <div class="row">
                             <div class="col-4 mt-3">
                                 <p>Pengeluaran</p>
@@ -78,24 +68,5 @@
       </div>
     </div>
 </div>
-
-@endsection
-
-@section('scripts')
-<script>
-    $(function() {
-            $('#startDate').datepicker({
-                orientation: 'bottom left',
-                format: 'yyyy-mm-dd'
-            });
-    });
-
-    $(function() {
-            $('#endDate').datepicker({
-                orientation: 'bottom left',
-                format: 'yyyy-mm-dd'
-            });
-    });
-</script>
 
 @endsection

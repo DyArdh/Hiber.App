@@ -16,14 +16,15 @@ class LaporanKeuanganController extends Controller
 
     public function viewFilter (Request $request)
     {
-        $start = Carbon::parse(request()->startDate)->toDateString();
-        $end = Carbon::parse(request()->endDate)->toDateString();
-        $startDate = Carbon::parse(request()->startDate)->toDateTimeString();
-        $endDate = Carbon::parse(request()->endDate)->addSeconds(86399)->toDateTimeString();
+        $from = $request->from;
+        $to = $request->to;
 
-        $sale = Penjualan::whereBetween('updated_at', [$startDate, $endDate])->sum('total_harga');
-        $spending = Pengeluaran::whereBetween('updated_at', [$startDate, $endDate])->sum('harga');
+        $start = Carbon::parse($from)->toDateTimeString();
+        $end = Carbon::parse($to)->endOfMonth()->toDateTimeString();
 
-        return view('keuangan.laporanKeuangan.viewFilter', compact('sale', 'spending', 'start', 'end'));
+        $sale = Penjualan::whereBetween('updated_at', [$start, $end])->sum('total_harga');
+        $spending = Pengeluaran::whereBetween('updated_at', [$start, $end])->sum('harga');
+
+        return view('keuangan.laporanKeuangan.viewFilter', compact('sale', 'spending', 'start', 'end', 'from', 'to'));
     }
 }

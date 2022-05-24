@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\penjualan;
 use Carbon\Carbon;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class RekapPenjualanController extends Controller
@@ -16,9 +15,8 @@ class RekapPenjualanController extends Controller
      */
     public function index()
     {
-        $data = Penjualan::all();
 
-        return view('penjualan.rekap.index', compact('data'));
+        return view('penjualan.rekap.index');
     }
 
     /**
@@ -30,13 +28,14 @@ class RekapPenjualanController extends Controller
 
     public function viewFilter(Request $request)
     {
-        $start = Carbon::parse(request()->startDate)->toDateString();
-        $end = Carbon::parse(request()->endDate)->toDateString();
-        $startDate = Carbon::parse(request()->startDate)->toDateTimeString();
-        $endDate = Carbon::parse(request()->endDate)->addSeconds(86399)->toDateTimeString();
+        $from = $request->from;
+        $to = $request->to;
 
-        $data = Penjualan::whereBetween('updated_at', [$startDate, $endDate])->get();
+        $start = Carbon::parse($from)->toDateTimeString();
+        $end = Carbon::parse($to)->endOfMonth()->toDateTimeString();
+        
+        $data = Penjualan::whereBetween('created_at', [$start, $end])->get();
 
-        return view('penjualan.rekap.viewFilter', compact('data', 'start', 'end'));
+        return view('penjualan.rekap.viewFilter', compact('data', 'from', 'to'));
     }
 }

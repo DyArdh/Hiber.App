@@ -44,10 +44,11 @@
     <div class="table-responsive w-auto">
       <table class="table table-bordered">
         <thead>
-          <th scope="col">No. Transaksi</th>
+          <th style="width: 15%" scope="col">No. Transaksi</th>
           <th scope="col">Tanggal</th>
           <th scope="col">Merk</th>
           <th scope="col">Varian (kg)</th>
+          <th scope="col">Jumlah (kg)</th>
           <th scope="col">Harga</th>
           <th scope="col">Total Harga</th>
         </thead>
@@ -55,9 +56,10 @@
           @foreach ($data as $row)
           <tr>
             <td>{{ $row->id }}</td>
-            <td>{{ $row->updated_at }}</td>
+            <td>{{ $row->created_at }}</td>
             <td>{{ $row->hargaProduct->merk }}</td>
             <td>{{ $row->varian }}</td>
+            <td>{{ $row->jumlah }}</td>
             <td>{{ $row->harga }}</td>
             <td>{{ $row->total_harga }}</td>
           </tr>
