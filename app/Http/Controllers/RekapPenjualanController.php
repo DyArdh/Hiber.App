@@ -15,6 +15,7 @@ class RekapPenjualanController extends Controller
      */
     public function index()
     {
+        $this->authorize('view', Penjualan::class);
 
         return view('penjualan.rekap.index');
     }
@@ -28,13 +29,17 @@ class RekapPenjualanController extends Controller
 
     public function viewFilter(Request $request)
     {
+        $this->authorize('view', Penjualan::class);
+
         $from = $request->from;
         $to = $request->to;
 
         $start = Carbon::parse($from)->toDateTimeString();
         $end = Carbon::parse($to)->endOfMonth()->toDateTimeString();
         
-        $data = Penjualan::whereBetween('created_at', [$start, $end])->get();
+        $data = Penjualan::whereBetween('created_at', [$start, $end])
+            ->orderBy('created_at', 'ASC')
+            ->get();
 
         return view('penjualan.rekap.viewFilter', compact('data', 'from', 'to'));
     }

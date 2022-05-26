@@ -18,7 +18,7 @@ class PenjualanController extends Controller
     {
         $this->authorize('view', Penjualan::class);
 
-        $data = Penjualan::all();
+        $data = Penjualan::orderBy('created_at', 'ASC')->get();
 
         return view('penjualan.penjualan.index', compact('data'));
     }
