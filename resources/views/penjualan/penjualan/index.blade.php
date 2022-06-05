@@ -44,24 +44,29 @@
     <div class="table-responsive w-auto">
       <table class="table table-bordered">
         <thead>
-          <th style="width: 15%" scope="col">No. Transaksi</th>
+          <th style="width: 15%" scope="col">No. Faktur</th>
           <th scope="col">Tanggal</th>
-          <th scope="col">Merk</th>
-          <th scope="col">Varian (kg)</th>
-          <th scope="col">Jumlah (kg)</th>
-          <th scope="col">Harga</th>
           <th scope="col">Total Harga</th>
+          <th scope="col">Penanggung Jawab</th>
+          <th scope="col">Aksi</th>
         </thead>
         <tbody class="align-middle">
           @foreach ($data as $row)
           <tr>
-            <td>{{ $row->id }}</td>
-            <td>{{ $row->created_at }}</td>
-            <td>{{ $row->hargaProduct->merk }}</td>
-            <td>{{ $row->varian }}</td>
-            <td>{{ $row->jumlah }}</td>
-            <td>{{ $row->harga }}</td>
-            <td>{{ $row->total_harga }}</td>
+            <td>{{ $row->nomor_faktur }}</td>
+            <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+            <td>Rp. {{ number_format($row->total_harga, 0, ',', '.') }}</td>
+            <td>{{ $row->user->nama }}</td>
+            <td>         
+              <a href="{{ route('penjualan.show', $row->nomor_faktur) }}" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-eye"></i>
+              </a>
+              @can('update', $row)
+                <a href="{{ route('penjualan.edit', $row->nomor_faktur) }}" class="btn btn-sm btn-warning">
+                  <i class="fa-solid fa-pencil"></i>
+                </a>
+              @endcan
+            </td>
           </tr>
           @endforeach
         </tbody>
@@ -77,25 +82,6 @@
     if ($('.success').length) {
       $('#modal-success').modal('show');
     }
-
-    $('.delete-btn').click(function () {
-      swal({
-            text: "Apakah anda ingin menghapus data?",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          })
-      .then((willDelete) => {
-        if (willDelete) {
-          $('#delete-gabah-form').submit();
-          swal("Data berhasil dihapus!", {
-            icon: "success",
-          });
-        } else {
-          swal("Data tidak dihapus!");
-        }
-      });
-    });
   });
 </script>
 @endsection

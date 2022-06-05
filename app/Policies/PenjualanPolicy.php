@@ -33,4 +33,16 @@ class PenjualanPolicy
     {
         return $user->role == 'Admin';
     }
+
+    /**
+     * Determine whether the user can update the model.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Pengeluaran  $pengeluaran
+     * @return \Illuminate\Auth\Access\Response|bool
+     */
+    public function update(User $user)
+    {
+        return $user->role == 'Admin';
+    }
 }

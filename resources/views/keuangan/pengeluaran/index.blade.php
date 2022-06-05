@@ -70,7 +70,7 @@
                   <td>{{ $row->id }}</td>
                   <td> {{ $row->created_at }} </td>
                   <td> {{ $row->jenisPengeluaran->jenis }} </td>
-                  <td> {{ $row->harga }} </td>
+                  <td>Rp. {{ number_format($row->harga, 0, ',', '.') }}</td>
                   <td> {{ $row->keterangan }} </td>
                   @can('update', \App\Models\Pengeluaran::class)
                     <td class="d-flex">

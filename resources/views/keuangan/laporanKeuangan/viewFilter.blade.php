@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-1 mt-3">:</div>
                             <div class="col-7 mt-3">
-                                <p class="text-end">Rp {{ $spending }}</p>
+                                <p class="text-end">Rp. {{ number_format($spending, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -49,8 +49,8 @@
                                 <p>Pendapatan</p>
                             </div>
                             <div class="col-1 mt-3">:</div>
-                            <div class="col-7 mt-3">
-                                <p class="text-end">Rp {{ $sale }}</p>
+                            <div class="col-7 mt-3">                                
+                                <p class="text-end">Rp. {{ number_format($sale, 0, ',', '.') }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="col-1 mt-3">:</div>
                             <div class="col-7 mt-3">
-                                <p class="text-end fw-bold @if($sale < $spending) text-danger @else text-success @endif">Rp {{ $sale - $spending }}</p>
+                                <p class="text-end fw-bold @if($sale < $spending) text-danger @else text-success @endif">Rp. {{ number_format($sale - $spending, 0, ',', '.') }}</p>
                             </div>
                         </div>
                     </div>

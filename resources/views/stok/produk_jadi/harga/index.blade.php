@@ -51,7 +51,7 @@
                     <tr>
                         <td>{{ $row+1 }}</td>
                         <td> {{ $value->merk }} </td>
-                        <td> {{ $value->harga }} </td>
+                        <td>Rp. {{ number_format($value->harga, 0, ',', '.') }}</td>                  
                         @can('update', \App\Models\HargaProduct::class)
                           <td class="d-flex">
                             <a href="{{ route('harga.edit', $value->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>  

@@ -51,24 +51,22 @@
     <div class="table-responsive w-auto">
       <table class="table table-bordered">
         <thead>
-          <th scope="col">No. Transaksi</th>
+          <th scope="col">No. Faktur</th>
           <th scope="col">Tanggal</th>
-          <th scope="col">Merk</th>
-          <th scope="col">Varian</th>
-          <th scope="col">Berat (kg)</th>
-          <th scope="col">Harga</th>
           <th scope="col">Total Harga</th>
+          <th scope="col">Penanggung Jawab</th>
         </thead>
         <tbody class="align-middle">
           @foreach ($data as $row)
           <tr>
-            <td>{{ $row->id }}</td>
-            <td>{{ $row->created_at }}</td>
-            <td>{{ $row->hargaProduct->merk }}</td>
-            <td>{{ $row->varian }}</td>
-            <td>{{ $row->jumlah }}</td>
-            <td>{{ $row->harga }}</td>
-            <td>{{ $row->total_harga }}</td>
+            <td>
+              <a href="{{ route('penjualan.show', $row->nomor_faktur) }}" class="text-success">
+                {{ $row->nomor_faktur }}
+              </a>
+            </td>
+            <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+            <td>Rp. {{ number_format($row->total_harga, 0, ',', '.') }}</td>
+            <td>{{ $row->user->nama }}</td>
           </tr>
           @endforeach
         </tbody>

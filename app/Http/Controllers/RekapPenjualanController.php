@@ -36,8 +36,9 @@ class RekapPenjualanController extends Controller
 
         $start = Carbon::parse($from)->toDateTimeString();
         $end = Carbon::parse($to)->endOfMonth()->toDateTimeString();
-        
+
         $data = Penjualan::whereBetween('created_at', [$start, $end])
+            ->with('user')
             ->orderBy('created_at', 'ASC')
             ->get();
 

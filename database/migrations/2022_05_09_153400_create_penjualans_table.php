@@ -15,11 +15,9 @@ return new class extends Migration
     {
         Schema::create('penjualans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('merk_id');
-            $table->integer('varian');
-            $table->integer('jumlah');
-            $table->bigInteger('harga');
+            $table->string('nomor_faktur', 25)->unique();
             $table->bigInteger('total_harga');
+            $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

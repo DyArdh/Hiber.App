@@ -66,7 +66,7 @@
                   <td> {{ $row->updated_at }} </td>
                   <td> {{ $row->berat }} </td>
                   <td> {{ $row->hargaProduct->merk }} </td>
-                  <td> {{ $row->harga }} </td>
+                  <td>Rp. {{ number_format($row->harga, 0, ',', '.') }}</td>                  
                   <td> {{ $row->penanggung_jawab }} </td>
                   @can('update', \App\Models\StokGudang::class)
                     <td class="d-flex">
