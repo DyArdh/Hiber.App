@@ -42,7 +42,7 @@ class HargaProductController extends Controller
 
         $validations = $request->validate([
             'merk' => 'required|max:255',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         HargaProduct::create($validations);
@@ -76,7 +76,7 @@ class HargaProductController extends Controller
 
         $validations = $request->validate([
             'merk' => 'required|max:255',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         $data = HargaProduct::findOrFail($id);

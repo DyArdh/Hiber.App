@@ -16,7 +16,7 @@ class PengeluaranController extends Controller
     public function index()
     {
         $this->authorize('view', Pengeluaran::class);
-        
+
         $data = Pengeluaran::all();
 
         return view('keuangan.pengeluaran.index', compact('data'));
@@ -49,7 +49,7 @@ class PengeluaranController extends Controller
         $validations = $request->validate([
             'jenis_id' => 'required',
             'keterangan' => 'required|max:255',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         Pengeluaran::create($validations);
@@ -87,7 +87,7 @@ class PengeluaranController extends Controller
         $validations = $request->validate([
             'jenis_id' => 'required|numeric',
             'keterangan' => 'required|max:255',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         $data = Pengeluaran::findOrFail($id);

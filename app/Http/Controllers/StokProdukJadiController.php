@@ -50,7 +50,7 @@ class StokProdukJadiController extends Controller
             'berat' => 'required|numeric',
             'jenis' => 'required',
             'merk_id' => 'required',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
             'penanggung_jawab' => 'required|max:255',
         ]);
 
@@ -89,7 +89,7 @@ class StokProdukJadiController extends Controller
         $validations = $request->validate([
             'berat' => 'required|numeric',
             'merk_id' => 'required',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0',
             'penanggung_jawab' => 'required|max:255',
         ]);
 

@@ -90,7 +90,7 @@ class StokPenyortiranController extends Controller
             'berat' => 'required',
             'jenis' => 'required|max:255',
             'merk_id' => 'max:255',
-            'harga' => 'max:255',
+            'harga' => 'numeric|min:0',
             'status' => 'required|max:255',
             'penanggung_jawab' => 'required|max:255',
         ]);

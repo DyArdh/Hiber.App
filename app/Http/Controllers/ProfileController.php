@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $user = Auth::user();
         return view('accounts.profile.index', compact('user'));
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
 
         $this->authorize('update', User::class);
 
@@ -27,11 +29,9 @@ class ProfileController extends Controller
             'alamat' => 'required|max:255',
             'email' => 'required|max:255',
             'password' => 'required|max:255',
-            'no_hp' => 'required|numeric',
+            'no_hp' => 'required|numeric|digits_between:10,13|unique:users,no_hp,' . $userDetails->id,
             'role' => 'required',
         ]);
-
-        
 
         $user->update($validations);
         return back()->with('message', 'Data Profile Telah Diupdate');
