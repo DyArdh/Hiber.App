@@ -68,7 +68,7 @@
               @foreach ($data as $row)
               <tr>
                   <td>{{ $row->id }}</td>
-                  <td> {{ $row->created_at }} </td>
+                  <td> {{ date('d F Y   -   h:i A', strtotime($row->created_at)) }} </td>
                   <td> {{ $row->jenisPengeluaran->jenis }} </td>
                   <td>Rp. {{ number_format($row->harga, 0, ',', '.') }}</td>
                   <td> {{ $row->keterangan }} </td>

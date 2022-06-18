@@ -3,7 +3,21 @@
 @section('title', 'Jenis Pengeluaran')
 @section('content')
  
-<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3 d-flex justify-content-center">Jenis Pengeluaran</div>
+<div class="acc-header col-xl-3 col-md-6 py-2 mt-4 rounded-3">
+  <div class="row my-2">
+    <div class="col-6">
+        <span class="ms-3">Jenis Pengeluran</span>
+    </div>
+    <div class="col-6">
+        <a href="{{ route('keuangan.pengeluaran.index') }}">
+            <span class="float-end me-3 bg-light text-dark rounded-1 px-3 py-1 fs-6">
+                <i class="fa-solid fa-arrow-left-long"></i>
+                Kembali
+            </span>
+        </a>
+    </div>
+  </div>
+</div>
     <div class="row">
         <div class="tabel-adm col-xl-3 col-md-6 mx-auto">
             <div class="row">

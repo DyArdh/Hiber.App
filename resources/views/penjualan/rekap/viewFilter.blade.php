@@ -64,7 +64,7 @@
                 {{ $row->nomor_faktur }}
               </a>
             </td>
-            <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+            <td>{{ date('d F Y - h:i A', strtotime($row->created_at)) }}</td>
             <td>Rp. {{ number_format($row->total_harga, 0, ',', '.') }}</td>
             <td>{{ $row->user->nama }}</td>
           </tr>

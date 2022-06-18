@@ -54,7 +54,7 @@
           @foreach ($data as $row)
           <tr>
             <td>{{ $row->nomor_faktur }}</td>
-            <td>{{ date('d F Y', strtotime($row->created_at)) }}</td>
+            <td>{{ date('d F Y - h:i A', strtotime($row->created_at)) }}</td>
             <td>Rp. {{ number_format($row->total_harga, 0, ',', '.') }}</td>
             <td>{{ $row->user->nama }}</td>
             <td>         
