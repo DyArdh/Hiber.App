@@ -17,9 +17,9 @@ class StokProdukJadiController extends Controller
     {
         $this->authorize('view', StokGudang::class);
 
-        $data = StokGudang::where('status', 'Produk Jadi')->with('hargaProduct')->get();
+        $data = StokGudang::where('status', 'Produk Jadi')->with('hargaProduct')->paginate(20);
 
-        return view('stok.produk_jadi.index', compact('data'));
+        return view('stok.produk_jadi.index', compact('data'), ['data' => $data]);
     }
 
     /**

@@ -9,8 +9,8 @@ class StokPenggilinganController extends Controller
 {
     public function index()
     {
-        $data = StokGudang::where('status', 'Penggilingan')->get();
-        return view('stok.penggilingan.index', compact('data'));
+        $data = StokGudang::where('status', 'Penggilingan')->paginate(20);
+        return view('stok.penggilingan.index', compact('data'), ['data' => $data]);
     }
 
     public function createData()

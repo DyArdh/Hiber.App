@@ -20,9 +20,9 @@ class PenjualanController extends Controller
     {
         $this->authorize('view', Penjualan::class);
 
-        $data = Penjualan::orderBy('created_at', 'ASC')->with('user')->get();
+        $data = Penjualan::orderBy('created_at', 'ASC')->with('user')->paginate(20);
 
-        return view('penjualan.penjualan.index', compact('data'));
+        return view('penjualan.penjualan.index', compact('data'), ['data' => $data]);
     }
 
     /**

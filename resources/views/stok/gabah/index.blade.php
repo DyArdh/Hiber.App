@@ -58,7 +58,7 @@
             <td>{{ $row->status }}</td>
             <td>{{ $row->penanggung_jawab }}</td>
             @can('update', $row)
-              <td>
+              <td class="d-flex">
                 <a href="{{ route('gabah.edit', $row->id) }}"><button type="button" class="edit-btn rounded-3 ms-2 my-1"><i class="fa-solid fa-pen-to-square"></i></button></a>
                 <form id="delete-gabah-form" action="{{ route('gabah.destroy', $row->id) }}" method="POST">
                   @csrf
@@ -71,6 +71,7 @@
           @endforeach
         </tbody>
       </table>
+      {{ $data->links() }}
     </div>
   </div>
 </div>

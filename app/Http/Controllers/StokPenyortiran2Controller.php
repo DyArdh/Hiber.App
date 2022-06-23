@@ -19,9 +19,9 @@ class StokPenyortiran2Controller extends Controller
 
         $data = StokGudang::where('status', 'penyortiran')
             ->where('jenis', 'Super')
-            ->get();
+            ->paginate(20);
 
-        return view('stok.penyortiran2.index', compact('data'));
+        return view('stok.penyortiran2.index', compact('data'), ['data' => $data]);
     }
 
     /**

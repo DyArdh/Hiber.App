@@ -16,9 +16,9 @@ class StokGabahController extends Controller
     {
         $this->authorize('view', StokGudang::class);
 
-        $data = StokGudang::where('status', 'gabah')->get();
+        $data = StokGudang::where('status', 'gabah')->paginate(20);
 
-        return view('stok.gabah.index', compact('data'));
+        return view('stok.gabah.index', compact('data'), ['data' => $data]);
     }
 
     /**

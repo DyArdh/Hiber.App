@@ -16,9 +16,9 @@ class JenisPengeluaranController extends Controller
     {
         $this->authorize('view', JenisPengeluaran::class);
 
-        $data = JenisPengeluaran::all();
+        $data = JenisPengeluaran::all()->paginate(20);
 
-        return view('keuangan.pengeluaran.jenisPengeluaran.index', compact('data'));
+        return view('keuangan.pengeluaran.jenisPengeluaran.index', compact('data'), ['data' => $data]);
     }
 
     /**

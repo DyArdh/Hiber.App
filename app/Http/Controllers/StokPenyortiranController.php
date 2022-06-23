@@ -21,9 +21,9 @@ class StokPenyortiranController extends Controller
             ->where(function ($query) {
                 $query->where('jenis', 'Polos')
                     ->orWhere('jenis', 'Medium');
-            })->get();
+            })->paginate(20);
 
-        return view('stok.penyortiran.index', compact('data'));
+        return view('stok.penyortiran.index', compact('data'), ['data' => $data]);
     }
 
     /**
