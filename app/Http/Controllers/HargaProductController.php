@@ -14,7 +14,7 @@ class HargaProductController extends Controller
      */
     public function index()
     {
-        $data = HargaProduct::all()->paginate(20);
+        $data = HargaProduct::paginate(20);
         return view('stok.produk_jadi.harga.index', compact('data'), ['data' => $data]);
     }
 
